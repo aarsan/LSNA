@@ -42,6 +42,14 @@ $app->get('/new', function() {
 
 $app->post('/verify/address', function () {
 
+    $key = "search :";
+    $value = $_POST['street'];
+    $value = "'$value'";
+    $left = "{";
+    $right = "}";
+
+    $dataset = $left. " " .$key. " " .$value. " " .$right;
+
     ob_start();
     include('./assets/scripts/query.js');
     $ajax = ob_get_contents();
@@ -53,14 +61,7 @@ $app->post('/verify/address', function () {
 
 $app->get('/verify/address', function () {
 
-    $key = "search :";
-    $value = $_POST['street'];
-    $value = "'$value'";
-    $left = "{";
-    $right = "}";
-
-    $dataset = $left. " " .$key. " " .$value. " " .$right;
-
+    
     ob_start();
     include('./assets/scripts/query.js');
     $ajax = ob_get_contents();
