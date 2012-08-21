@@ -53,7 +53,7 @@ $app->post('/verify/address', function () {
 });
 
 $app->get('/verify/address', function () {
-/*
+
     $key = "search :";
     $value = $_POST['street'];
     $value = "'$value'";
@@ -61,7 +61,10 @@ $app->get('/verify/address', function () {
     $right = "}";
 
     $dataset = $left. " " .$key. " " .$value. " " .$right;
-*/
+    
+include('./view/temp.php');
+break;
+
     ob_start();
     include('./assets/scripts/query.js');
     $ajax = ob_get_contents();
