@@ -48,7 +48,7 @@ $app->post('/verify/address', function () {
     ob_end_clean();
 
     //include('./view/form.html');
-    break;
+    die;
 
 });
 
