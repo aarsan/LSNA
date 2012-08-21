@@ -1,12 +1,12 @@
 <?php
-/*
-$app->get('/'), function () {
+
+$app->get('/login/'), function () {
 	$new_prop_form = "<form>hi</form>";
 	include('./view/index.html');
 
 };
 
-*/
+
 $app->get('/lsna/', function() {
 	$new_prop_form = "<form>hi</form>";
 	include('./view/index.html');
