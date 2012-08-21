@@ -40,7 +40,7 @@ $app->get('/new', function() {
 
 });
 
-$app->get('/verify/address', function () {
+$app->post('/verify/address', function () {
 
     ob_start();
     include('./assets/scripts/query.js');
@@ -51,7 +51,7 @@ $app->get('/verify/address', function () {
 
 });
 
-$app->post('/lsna/address', function () {
+$app->get('/verify/address', function () {
 
     $key = "search :";
     $value = $_POST['street'];
