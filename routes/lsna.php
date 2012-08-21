@@ -63,11 +63,11 @@ $app->get('/verify/address', function () {
 */
     $dataset = "{street : 'keeler'}";
     ob_start();
-    include('./lsna/query.js');
+    include('./assets/scripts/query.js');
     $ajax = ob_get_contents();
     ob_end_clean();
 
-    include('./lsna/lsna.html');
+    include('./view/lsna.html');
 
 });
 
