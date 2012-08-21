@@ -1,14 +1,21 @@
 <?php
 
+//this redirects from root to login page
 $app->get('/', function () {
 	header("Location: /login");
 	break;
 
 });
 
+//login page
 $app->get('/login', function () {
 	include('./view/login.html');
 
+});
+
+//this is the home page
+$app->get('/home', function () {
+	include('./view/home.html');
 });
 
 $app->get('/lsna/new', function() {
