@@ -30,6 +30,12 @@ $app->get('/search', function () {
 });
 
 $app->get('/new', function() {
+    
+    ob_start();
+    include('./assets/scripts/post.js');
+    $ajax = ob_get_contents();
+    ob_end_clean();
+
     include('./view/new_property.html');
 
 });
