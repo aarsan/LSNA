@@ -6,7 +6,7 @@
             type: 'GET',
             url: "http://data.cityofchicago.org/api/views/i6bp-fvbx/rows.json?jsonp=?",
             dataType: 'jsonp',
-            data: {search : 'keeler'},
+            data: <?php echo $dataset; ?>,
             crossDomain: true,
             success: function(response) {
 
