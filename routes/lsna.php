@@ -24,7 +24,8 @@ $app->get('/home', function () {
     include('./view/home.html');
 });
 
-$app->get('/lsna/new', function() {
+$app->get('/new', function() {
+    include('./view/new_property.html');
 
 });
 
