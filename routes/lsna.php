@@ -24,6 +24,11 @@ $app->get('/home', function () {
     include('./view/home.html');
 });
 
+$app->get('/search', function () {
+    include('./view/search.html');
+
+});
+
 $app->get('/new', function() {
     include('./view/new_property.html');
 
