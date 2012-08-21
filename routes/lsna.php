@@ -40,16 +40,14 @@ $app->get('/new', function() {
 
 });
 
-$app->get('/lsna/address', function () {
-
-    $nick_name = "Ahmet";
+$app->get('/verify/address', function () {
 
     ob_start();
-    include('./lsna/post.js');
+    include('./assets/scripts/query.js');
     $ajax = ob_get_contents();
     ob_end_clean();
 
-    include('./lsna/form.html');
+    include('./view/form.html');
 
 });
 
