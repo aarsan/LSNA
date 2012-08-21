@@ -48,7 +48,6 @@ $app->post('/verify/address', function () {
     ob_end_clean();
 
     include('./view/form.html');
-    //die;
 
 });
 
@@ -61,9 +60,6 @@ $app->get('/verify/address', function () {
     $right = "}";
 
     $dataset = $left. " " .$key. " " .$value. " " .$right;
-    
-include('./view/temp.php');
-break;
 
     ob_start();
     include('./assets/scripts/query.js');
