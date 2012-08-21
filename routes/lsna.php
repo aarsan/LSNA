@@ -1,7 +1,7 @@
 <?php
 
 $app->get('/', function () {
-	header("Location: /login/");
+	header("Location: /login");
 	break;
 
 });
