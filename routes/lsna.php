@@ -61,7 +61,6 @@ $app->get('/verify/address', function () {
 
     $dataset = $left. " " .$key. " " .$value. " " .$right;
 */
-    $dataset = "{street : 'keeler'}";
     ob_start();
     include('./assets/scripts/query.js');
     $ajax = ob_get_contents();
