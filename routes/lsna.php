@@ -1,8 +1,7 @@
 <?php
 
 $app->get('/', function () {
-	$new_prop_form = "<form>hi</form>";
-	include('./view/index.html');
+	header("Location: /login/");
 
 });
 
