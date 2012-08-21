@@ -15,12 +15,12 @@ $app->get('/login', function () {
 
 //this is the home page
 $app->get('/home', function () {
-/*
+
     ob_start();
     include('./assets/scripts/post.js');
     $ajax = ob_get_contents();
     ob_end_clean();
-*/
+
     include('./view/home.html');
 });
 
