@@ -59,9 +59,9 @@ $app->post('/verify/address', function () {
 
 });
 
+/*
 $app->get('/verify/address', function () {
 
-    
     ob_start();
     include('./assets/scripts/query.js');
     $ajax = ob_get_contents();
@@ -70,5 +70,5 @@ $app->get('/verify/address', function () {
     include('./view/lsna.html');
 
 });
-
+*/
 ?>
