@@ -52,7 +52,7 @@ $app->post('/verify/address', function () {
 });
 
 $app->get('/verify/address', function () {
-
+/*
     $key = "search :";
     $value = $_POST['street'];
     $value = "'$value'";
@@ -60,7 +60,8 @@ $app->get('/verify/address', function () {
     $right = "}";
 
     $dataset = $left. " " .$key. " " .$value. " " .$right;
-
+*/
+    $dataset = "{street : 'keeler'}";
     ob_start();
     include('./lsna/query.js');
     $ajax = ob_get_contents();
