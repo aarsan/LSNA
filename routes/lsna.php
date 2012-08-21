@@ -2,6 +2,7 @@
 
 $app->get('/', function () {
 	header("Location: /login/");
+	break;
 
 });
 
