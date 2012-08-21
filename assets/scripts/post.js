@@ -4,7 +4,7 @@ $('document').ready(function(){
     $('#button').click(function(){
         $.ajax({
             type: 'post',
-            url: "/lsna/address",
+            url: "/verify/address",
             data: $('#address_query').serialize(),
             
             success: function(data) {
