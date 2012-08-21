@@ -7,6 +7,7 @@ $app->get('/', function () {
 });
 
 $app->get('/login', function () {
+	include('./view/login.html');
 
 });
 
