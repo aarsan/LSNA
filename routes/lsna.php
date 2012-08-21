@@ -47,7 +47,7 @@ $app->post('/verify/address', function () {
     $ajax = ob_get_contents();
     ob_end_clean();
 
-    include('./view/form.html');
+    //include('./view/form.html');
 
 });
 
