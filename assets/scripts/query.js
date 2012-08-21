@@ -1,4 +1,4 @@
-<script LANGUAGE="JavaScript" SRC="/scripts/jquery-1.7.1.js"></script>
+<script LANGUAGE="JavaScript" SRC="/assets/scripts/jquery-1.8.0.min.js"></script>
 <script type="text/javascript">
     $('document').ready(function(){
 
