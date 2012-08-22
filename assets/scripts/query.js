@@ -10,7 +10,7 @@
             crossDomain: true,
             success: function(response) {
 
-                    $('#data_box').append('<p>Pick a matching street</p>');
+                    $('#data_box').append('<h2>Pick a matching street</h2>');
 
                 $.each(response.data, function (index, value) {
 
