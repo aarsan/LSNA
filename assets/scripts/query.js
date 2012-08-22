@@ -16,7 +16,7 @@
                     var word = string.split(",");
                     var street = word[8];
                     //$('#data_box').append('<p>'+street+'</p>');
-                    $('#data_box').append('<a href="#">'+street+'</a>');
+                    $('#data_box').append('<a href=\"#\">'+street+'</a>');
 
                     });               
 
