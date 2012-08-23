@@ -6,7 +6,7 @@
             type: 'GET',
             url: <?php echo $url; ?>,
             dataType: 'jsonp',
-            data: <?php echo $dataset; ?>,
+            data: <?php echo $dataset; ?>
             crossDomain: true,
             success: function(response) {
 
