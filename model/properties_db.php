@@ -9,7 +9,7 @@ class PropertiesDB {
 
 		$db = Database::getDB();
 		$query = "INSERT INTO properties
-					(DEFAULT, full_street_name, house_number, zip)
+					(full_street_name, house_number, zip)
 				  VALUES
 				    (:street, :number, :zip)";
 	    $statement = $db->prepare($query);
