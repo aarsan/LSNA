@@ -16,9 +16,8 @@ $app->post('/properties/add', function () {
 	require('./model/properties.php');
 	require('./model/properties_db.php');
 
-	new Property($street, $number, $zip);
-
-	PropertiesDB::newProperty($street, $number, $zip);
+	$property = new Property($street, $number, $zip);
+	PropertiesDB::newProperty($property);
 
 
 
