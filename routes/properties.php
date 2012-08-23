@@ -7,7 +7,7 @@ $app->post('/properties/add', function () {
 	$number = $_POST['number'];
 	$zip = $_POST['zip'];
 
-	include('./temp.php');
+	include('./view/temp.php');
 	break;
 
 	require('./model/database.php');
