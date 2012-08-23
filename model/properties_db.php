@@ -1,7 +1,12 @@
 <?php
 
 class PropertiesDB {
-	public static function newProperty($street, $number, $zip) {
+	public static function newProperty($property) {
+		
+		$street = $property->getStreet();
+		$number = $property->getNumber();
+		$zip = $property->getZip();
+
 		$db = Database::getDB();
 		$query = "INSERT INTO properties
 					(full_street_name, house_number, zip)
@@ -11,6 +16,8 @@ class PropertiesDB {
 	    $statement->bindValue(':street', $street);
         $statement->bindValue(':number', $number);
         $statement->bindValue(':zip', $zip);
+        $statement->execute();
+		$statement->closeCursor();
 	}
 }
 
