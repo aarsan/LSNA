@@ -52,6 +52,25 @@ $app->post('/verify/address', function () {
     $dataset = $left. " " .$key. " " .$value. " " .$right;
 
     ob_start();
+    include('./assets/scripts/street_match.js');
+    $response = ob_get_contents();
+    ob_end_clean();
+
+    ob_start();
+    include('./assets/scripts/query.js');
+    $ajax = ob_get_contents();
+    ob_end_clean();
+
+    include('./view/form.html');
+
+});
+
+$app->get('/select/street/:id', function ($id) {
+
+    $url = "http://data.cityofchicago.org/api/views/i6bp-fvbx/rows/$id.json";
+    $dataset = "";
+
+    ob_start();
     include('./assets/scripts/query.js');
     $ajax = ob_get_contents();
     ob_end_clean();
