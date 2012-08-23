@@ -4,7 +4,7 @@
 
         $.ajax({
             type: 'GET',
-            url: <?php echo $url; ?>,
+            url: "http://data.cityofchicago.org/api/views/i6bp-fvbx/rows/<?php echo $add_id; ?>.json",
             dataType: 'jsonp',
             data: <?php echo $dataset; ?>,
             crossDomain: true,
