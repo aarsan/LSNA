@@ -26,5 +26,9 @@ class Property {
     public function getZip() {
         return $this->zip;
     }
+
+    public function setPropId($value) {
+        $this->prop_id = $value;
+    }
 }
 ?>
