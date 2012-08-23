@@ -26,6 +26,15 @@ class PropertiesDB {
 		          FROM properties";
 		$statement = $db->prepare($query);
 		$statement->execute();
+		$properties = array();
+			foreach ($statement as $row) {
+				$property = new Property($row['full_street_name'], 
+					                     $row['house_number'], 
+					                     $row['zip']);
+				$properties[] = $property;
+			}
+		return $properties;
+		
 		$statement->closeCursor();
 	}
 }

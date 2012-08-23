@@ -26,7 +26,7 @@ $app->get('/properties/list', function () {
 	require('./model/properties.php');
 	require('./model/properties_db.php');
 
-	//$all_properties = PropertiesDB::listProperties();
+	$properties = PropertiesDB::listProperties();
 	include('./view/all_properties.php');
 
 });
