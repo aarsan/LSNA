@@ -49,7 +49,7 @@ $app->post('/verify/address', function () {
     $right = "}";
 
     $url = "'http://data.cityofchicago.org/api/views/i6bp-fvbx/rows.json?jsonp=?'";
-    $dataset = $left. " " .$key. " " .$value. " " .$right;
+    $dataset = $left. " " .$key. " " .$value. " " .$right. ",";
 
     ob_start();
     include('./assets/scripts/street_match.js');
@@ -69,6 +69,11 @@ $app->get('/select/street/:id', function ($id) {
 
     $url = "http://data.cityofchicago.org/api/views/i6bp-fvbx/rows/$id.json";
     $dataset = "";
+
+    ob_start();
+    include('./assets/scripts/street_info.js');
+    $response = ob_get_contents();
+    ob_end_clean();    
 
     ob_start();
     include('./assets/scripts/query.js');
