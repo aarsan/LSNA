@@ -9,9 +9,6 @@ $app->post('/properties/add', function () {
 	$zip = $_POST['zip'];
 	$zip = intval($zip);
 
-	include('./view/temp.php');
-	break;
-
 	require('./model/database.php');
 	require('./model/properties.php');
 	require('./model/properties_db.php');
