@@ -1,7 +1,6 @@
 <h2>List of all properties:</h2>
 <div id="content">
   <div id="label">
-  <h2>Group Invitations</h2>
   </div>
     <div id="invitations">
         <table id="table-1">
