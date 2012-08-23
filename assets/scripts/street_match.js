@@ -9,6 +9,6 @@
                     var id = word[0];
                     var min = word[13];
                     var max = word[14];
-                    $('#data_box').append('<li><a href="/select/street/' +id+' "> '+street+' :: Address range: '+min+' to '+max+' </a></li> ');
+                    $('#data_box').append('<li><a href="/select/street/' +id+' "> '+street+' || Address range: '+min+' to '+max+' </a></li> ');
 
                     });
