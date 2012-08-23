@@ -6,8 +6,10 @@
         <table id="table-1">
             <?php foreach ($properties AS $property) : ?>
                 <tr>
+                	<td><?php echo $property->getNumber(); ?></td>
                     <td><?php echo $property->getStreet(); ?></td>
-                    <td><a class="btn" href="/invitations/<?php echo $property->getStreet(); ?>/accept">accept</a>
+                    <td><?php echo $property->getZip(); ?></td>
+                    <td><a class="btn" href="/properties/<?php echo $property->getPropId(); ?>/view">view</a>
                 </tr>
             <?php endforeach; ?>
         </table>
