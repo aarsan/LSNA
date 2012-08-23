@@ -8,6 +8,7 @@
                 $('#data_box').append(' '+min+' to '+max+' ');
                 $('#data_box').append('</br><form action="/properties/add" method="post"><input type="text" name="number" />');
                 $('#data_box').append('<input type="hidden" name="street" value=" '+full_name+' " />');
-                $('#data_box').append('<input type="submit" name="enter" value="Enter Property" /></form>');
+                $('#data_box').append('<input type="submit" name="enter" value="Enter Property" />');
+                $('#data_box').append('</form>');
 
 
