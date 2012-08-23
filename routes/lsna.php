@@ -71,7 +71,7 @@ $app->get('/select/street/:id', function ($id) {
     $dataset = "";
 
     ob_start();
-    include('./assets/scripts/street_info.js');
+    include('./assets/scripts/street_select.js');
     $response = ob_get_contents();
     ob_end_clean();    
 
