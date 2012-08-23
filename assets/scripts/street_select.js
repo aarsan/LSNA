@@ -8,5 +8,5 @@
                 $('#data_box').append(' '+dir+' '+street+' '+suff+' ');
                 $('#data_box').append('<p>Address must fall within the range below:</p>');
                 $('#data_box').append(' '+min+' to '+max+' ');
-                $('#data_box').append('</br><p>Click<a href="#">here</a>to accept this street</p>');
+                $('#data_box').append('</br><p>Click <a href="#">here</a> to accept this street</p>');
 
