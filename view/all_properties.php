@@ -17,3 +17,4 @@
         <?php endforeach; ?>
         </tbody>
     </table>
+<a href="/home">home</a>
