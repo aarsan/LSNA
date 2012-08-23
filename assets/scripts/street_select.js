@@ -1,4 +1,4 @@
 
-                $('#data_box').append('<h2>You selected a street</h2>');
+                $('#data_box').html('<h2>You selected a street</h2>');
 
                     });
