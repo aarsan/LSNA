@@ -6,6 +6,6 @@
                 $('#data_box').append(' <strong> '+full_name+' </strong> ');
                 $('#data_box').append('<p>Address must fall within the range below:</p>');
                 $('#data_box').append(' '+min+' to '+max+' ');
-                $('#data_box').append('</br><form action="/properties/add" method="post"><label for="number">House Number:</label><label for="zip">Zip Code:</label><input type="text" name="number"><input type="hidden" name="street" value=" '+full_name+' "><input type="text" name="zip"><input type="submit" name="enter" value="Enter Property"></form>');
+                $('#data_box').append('</br><form action="/properties/add" method="post"><label for="number">House Number:</label><input type="text" name="number"></br><label for="zip">Zip Code:</label><input type="hidden" name="street" value=" '+full_name+' "><input type="text" name="zip"><input type="submit" name="enter" value="Enter Property"></form>');
 
 
