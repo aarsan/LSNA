@@ -48,7 +48,7 @@ $app->post('/verify/address', function () {
     $left = "{";
     $right = "}";
 
-    $url = "'http://data.cityofchicago.org/api/views/i6bp-fvbx/rows.json?jsonp=?'"
+    $url = "'http://data.cityofchicago.org/api/views/i6bp-fvbx/rows.json?jsonp=?'";
     $dataset = $left. " " .$key. " " .$value. " " .$right;
 
     ob_start();
