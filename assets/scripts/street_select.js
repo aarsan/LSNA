@@ -7,4 +7,4 @@
                 $('#data_box').html('<h2>You selected the following street:</h2>');
                 $('#data_box').append(' '+dir+' '+street+' '+suff+' ');
                 $('#data_box').append('<p>Address must fall within the range below:</p>');
-                $('#data_box').append(' '+min+' '&' '+max+' ');
+                $('#data_box').append(' '+min+' & '+max+' ');
