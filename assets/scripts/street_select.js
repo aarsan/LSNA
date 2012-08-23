@@ -8,7 +8,7 @@
                 $('#data_box').append(' <strong> '+dir+' '+street+' '+suff+' </strong> ');
                 $('#data_box').append('<p>Address must fall within the range below:</p>');
                 $('#data_box').append(' '+min+' to '+max+' ');
-                $('#data_box').append('</br><form><input type=\"text\" name=\"number\" />
-                	                              <input type=\"submit\" name=\"Enter Property\" />
-                	                              </form>');
+                $('#data_box').append('</br><form><input type=\"text\" name=\"number\" />');
+                $('#data_box').append('<input type=\"submit\" name=\"Enter Property\" /></form>');
+
 
