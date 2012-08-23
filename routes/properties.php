@@ -7,11 +7,16 @@ $app->post('/properties/add', function () {
 	$number = $_POST['number'];
 	$zip = $_POST['zip'];
 
+	include('./temp.php');
+	break;
+
 	require('./model/database.php');
 	require('./model/properties.php');
 	require('./model/properties_db.php');
 
 	PropertiesDB::newProperty($street, $number, $zip);
+
+
 
 });
 
