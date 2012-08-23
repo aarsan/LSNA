@@ -67,7 +67,7 @@ $app->post('/verify/address', function () {
 
 $app->get('/select/street/:id', function ($id) {
 
-    $url = "'http://data.cityofchicago.org/api/views/i6bp-fvbx/rows/$id.json'";
+    $url = "'http://data.cityofchicago.org/api/views/i6bp-fvbx/rows/$id.json?jsonp=?'";
     $dataset = "";
 
     ob_start();
