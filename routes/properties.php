@@ -16,7 +16,18 @@ $app->post('/properties/add', function () {
 	$property = new Property($street, $number, $zip);
 	PropertiesDB::newProperty($property);
 
+	header("Location: /properties/list");
+	break;
 
+});
+
+$app->get('/properties/list', function () {
+	require('./model/database.php');
+	require('./model/properties.php');
+	require('./model/properties_db.php');
+
+	PropertiesDB::listProperties();
+	include('./view/all_properties.php');
 
 });
 

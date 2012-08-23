@@ -19,6 +19,15 @@ class PropertiesDB {
         $statement->execute();
 		$statement->closeCursor();
 	}
+
+	public static function listProperties() {
+		$db = Database::getDB();
+		$query = "SELECT * 
+		          FROM properties";
+		$statement = $db->prepare($query);
+		$statement->execute();
+		$statement->closeCursor();
+	}
 }
 
 ?>
