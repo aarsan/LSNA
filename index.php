@@ -9,6 +9,7 @@ $app = new Slim(array(
 ));
 
 require('./routes/lsna.php');
+require('./routes/properties.php');
 
 
 $app->run();
