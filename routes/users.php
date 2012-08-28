@@ -40,7 +40,7 @@ $app->post('/users/login', function () {
         break;
 
     } else {
-        $error = "<div id=\"content\"><h2>Password is incorrect.</h2><p>please go back and enter your correct password</p><a href=\"/profiles/$member_ID\">go back</a></div>";
+        $error = "<div id=\"content\"><h2>Password is incorrect.</h2></div>";
         include('./view/errors/error.php');
         break;
     }
