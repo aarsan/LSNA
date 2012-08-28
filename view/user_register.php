@@ -22,5 +22,6 @@
 			<td><input type="password" name="pw_repeat" /></td>
 		</tr>
 
+<input type="submit" name="Register Account" />
 	</table>
 </form>
