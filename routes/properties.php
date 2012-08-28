@@ -3,6 +3,8 @@
 // This URI adds a new property into the DB /
 $app->post('/properties/add', function () {
 
+	$user_id = $_SESSION['user_id'];
+
 	$street = $_POST['street'];
 	$number = $_POST['number'];
 	$number = intval($number);
@@ -14,7 +16,7 @@ $app->post('/properties/add', function () {
 	require('./model/properties_db.php');
 
 	$property = new Property($street, $number, $zip);
-	PropertiesDB::newProperty($property);
+	PropertiesDB::newProperty($property, $user_id);
 
 	header("Location: /properties/list");
 	break;
@@ -27,7 +29,7 @@ $app->get('/properties/list', function () {
 	require('./model/properties_db.php');
 
 	$properties = PropertiesDB::listProperties();
-	$action = $action = "<a href=\"/users/logout\">logout</a>";
+	$action = "<a href=\"/users/logout\">logout</a>";
 	include('./view/all_properties.php');
 
 });
