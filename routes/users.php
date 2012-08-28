@@ -2,7 +2,8 @@
 session_start();
 
 $app->get('/users/register', function () {
-    include('./view/user_register.php');
+	$action = "<a href=\"/users/login\">login</a>";
+    include('./view/register.php');
 
 });
 
