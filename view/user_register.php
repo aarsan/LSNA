@@ -1,2 +1,1 @@
-<?php
-?>
+<h2>New User Registration Page</h2>
