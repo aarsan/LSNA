@@ -46,10 +46,10 @@ class UsersDB {
         $statement->bindValue(':email', $email);
         $statement->execute();
         $row = $statement->fetch();
-        $user = new User($row['user_id'],
-        	             $row['first_name'],
+        $user = new User($row['first_name'],
         	             $row['last_name'],
-        	             $row['email']);
+        	             $row['email'],
+        	             $row['user_id']);
         return $user;
 
     }
