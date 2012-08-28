@@ -30,7 +30,7 @@ $app->post('/users/login', function () {
 	$password = $_POST['password'];
 
 	require('./model/database.php');
-	//require('./model/users_db.php');
+	require('./model/users_db.php');
 /*
 	$valid = UsersDB::isValidUser($email, $password);
 
