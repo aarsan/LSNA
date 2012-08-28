@@ -17,7 +17,7 @@
 	<tbody>
 		<?php foreach ($properties as $property) : ?>
 		<tr>
-			<td><?php echo $property->getNumber(); ?></td>
+			<td><a href="#"><?php echo $property->getNumber(); ?></a></td>
 			<td><?php echo $property->getStreet(); ?></td>
 			<td><?php echo $property->getZip(); ?></td>
 		</tr>
