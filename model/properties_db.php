@@ -52,6 +52,27 @@ class PropertiesDB {
 		
 		$statement->closeCursor();
 	}
+
+	public static function viewQueue($user_id) {
+		$db = Database::getDB();
+		$query = "SELECT properties.prop_id, full_street_name, house_number, zip
+                  FROM properties
+                  INNER JOIN queue ON queue.prop_id = properties.prop_id
+                  WHERE queue.user_id = :user_id";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':user_id', $user_id);
+        $properties = array();
+			foreach ($statement as $row) {
+				$property = new Property($row['full_street_name'], 
+					                     $row['house_number'], 
+					                     $row['zip']);
+				$property->setPropId($row['prop_id']);
+				$properties[] = $property;
+			}
+		return $properties;
+		
+		$statement->closeCursor();
+	}
 }
 
 ?>
