@@ -13,4 +13,3 @@
 	</table>
 <input type="submit" value="login" />
 </form>
-<a href="/users/register">register new account</a>
