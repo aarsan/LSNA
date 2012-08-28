@@ -31,7 +31,7 @@ $app->post('/users/login', function () {
 
 	require('./model/database.php');
 	require('./model/users_db.php');
-/*
+
 	$valid = UsersDB::isValidUser($email, $password);
 
 	if ($valid == TRUE) {
@@ -44,7 +44,7 @@ $app->post('/users/login', function () {
         include('./view/errors/error.php');
         break;
     }
-*/
+
 });
 
 ?>
