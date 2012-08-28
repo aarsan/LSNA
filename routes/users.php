@@ -31,7 +31,7 @@ $app->post('/users/add', function () {
 	require('./model/users_db.php');
 	$user = new User($first_name, $last_name, $email, $password);
 	UsersDB::newUser($user);
-	header("Location: /login");
+	header("Location: /home");
 	break;
 
 });
