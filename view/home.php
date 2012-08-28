@@ -9,4 +9,20 @@
 <a href="/properties/search">Update an existing Property</a>
 </br>
 <a href="/properties/list">list all properties</a>
+</br>
+</br>
+</br>
+<p>Your Property Queue</p>
+<table>
+	<thead>
+		<th>Address</th>
+	</thead>
+	<tbody>
+		<?php foreach ($properties as $property) : ?>
+		<tr>
+			<td></td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>
 

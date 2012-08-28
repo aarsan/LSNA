@@ -7,12 +7,20 @@ $app->get('/home', function () {
         break;
     }
 
+    $user_id = $_SESSION['user_id'];
+
+    require('./model/database.php');
+    require('./model/properties.php');
+    require('./model/properties_db.php');
+
     ob_start();
     include('./assets/scripts/post.js');
     $ajax = ob_get_contents();
     ob_end_clean();
 
     $action = "<a href=\"/users/logout\">logout</a>";
+
+    $properties = PropertiesDB::viewQueue($user_id);
     include('./view/home.php');
 
 });
