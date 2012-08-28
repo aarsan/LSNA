@@ -3,9 +3,9 @@
 <html>
 <h2>Welcome to LSNA</h2>
 </br>
-<a href="/new">Enter a new property</a>
+<a href="/properties/new">Enter a new property</a>
 </br>
-<a href="/search">Update an existing Property</a>
+<a href="/properties/search">Update an existing Property</a>
 </br>
 <a href="/properties/list">list all properties</a>
 
