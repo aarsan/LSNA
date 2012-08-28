@@ -31,7 +31,6 @@ class UsersDB {
                   WHERE email = :email";
         $statement = $db->prepare($query);
         $statement->bindValue(':email', $email);
-        $statement->bindValue(':password', $password);
         $statement->execute();
         $row = $statement->fetch();
         $statement->closeCursor();
