@@ -1,5 +1,5 @@
 <h2>New User Registration Page</h2>
-<form>
+<form method="post" action="/users/add">
 	<table>
 		<tr>
 			<td>First Name:</td>
