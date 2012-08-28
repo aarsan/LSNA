@@ -7,6 +7,17 @@ $app->get('/users/register', function () {
 
 $app->post('/users/add', function () {
 
+	$first_name = $_POST['first_name'];
+	$last_name = $_POST['last_name'];
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+
+	require('./model/users.php');
+	require('./model/users_db.php');
+
+	$user = new User($first_name, $last_name, $email, $password);
+	UsersDB::newUser($user);
+
 });
 
 ?>

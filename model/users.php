@@ -1,6 +1,6 @@
 <?php
 
-class Users {
+class User {
 	private $user_id;
 	private $first_name;
 	private $last_name;
