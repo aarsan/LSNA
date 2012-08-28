@@ -1,1 +1,1 @@
-<a href="/users/logout">logout</a>
+<?php echo $action; ?>
