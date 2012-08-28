@@ -1,3 +1,4 @@
+<?php include('./view/header.php'); ?>
 <h2>Login Page</h2>
 <form method="post" action="/users/login" />
 	<table>

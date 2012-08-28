@@ -1,3 +1,4 @@
+<?php include('./view/header.php'); ?>
 <html>
 <h2>Search for a property in the system</h2>
 <h4>Enter as little or as much search criteria you want</h4>
