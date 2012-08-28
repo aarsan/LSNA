@@ -29,7 +29,7 @@ $app->post('/users/add', function () {
 	require('./model/database.php');
 	require('./model/users.php');
 	require('./model/users_db.php');
-	$user = new User($first_name, $last_name, $email, $password);
+	$user = new User($first_name, $last_name, $email, NULL, $password);
 	UsersDB::newUser($user);
 	header("Location: /home");
 	break;
@@ -48,9 +48,6 @@ $app->post('/users/login', function () {
 	if ($valid == TRUE) {
 		$_SESSION['is_valid_member'] = TRUE;
 		$_SESSION['user_id'] = intval(UsersDB::getUserInfo($email)->getUserId());
-		$user_id = $_SESSION['user_id'];
-		include('./view/temp.php');
-		break;
         header("Location: /home");
         break;
     } else {
