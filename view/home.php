@@ -15,9 +15,9 @@
 <p>Your Property Queue</p>
 <table>
 	<thead>
-		<th>Property</th>
+		<th>Number</th>
 		<th>Address</th>
-		<th></th>
+		<th>Zip</th>
 		<th>Progress</th>
 	</thead>
 	<tbody>
