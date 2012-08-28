@@ -46,7 +46,7 @@ $app->post('/users/login', function () {
 
 	if ($valid == TRUE) {
 		$_SESSION['is_valid_member'] = TRUE;
-		//$_SESSION['user_id'] = UsersDB::getUserInfo->getUserId();
+		$_SESSION['user_id'] = UsersDB::getUserInfo->getUserId($email);
         header("Location: /home");
         break;
     } else {
