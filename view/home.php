@@ -14,9 +14,6 @@
 </br>
 <p>Your Property Queue</p>
 <table>
-	<thead>
-		<th>Address</th>
-	</thead>
 	<tbody>
 		<?php foreach ($properties as $property) : ?>
 		<tr>
