@@ -26,6 +26,7 @@ $app->post('/users/add', function () {
 });
 
 $app->post('/users/login', function () {
+	session_start();
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	require('./model/database.php');
