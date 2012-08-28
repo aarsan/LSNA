@@ -13,7 +13,7 @@ $app->get('/home', function () {
     ob_end_clean();
 
     $action = "<a href=\"/users/logout\">logout</a>";
-    include('./view/home.html');
+    include('./view/home.php');
 
 });
 
