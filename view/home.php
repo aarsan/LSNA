@@ -14,12 +14,19 @@
 </br>
 <p>Your Property Queue</p>
 <table>
+	<thead>
+		<th>Property Address</th>
+		<th></th>
+		<th></th>
+		<th>Progress</th>
+	</thead>
 	<tbody>
 		<?php foreach ($properties as $property) : ?>
 		<tr>
 			<td><a href="#"><?php echo $property->getNumber(); ?></a></td>
 			<td><a href="#"><?php echo $property->getStreet(); ?></a></td>
 			<td><a href="#"><?php echo $property->getZip(); ?></a></td>
+			<td>0/20 complete</td>
 		</tr>
 		<?php endforeach; ?>
 	</tbody>
