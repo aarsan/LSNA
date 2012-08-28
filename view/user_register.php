@@ -21,7 +21,6 @@
 			<td>Re-Enter Password:</td>
 			<td><input type="password" name="pw_repeat" /></td>
 		</tr>
-
-<input type="submit" name="Register Account" />
 	</table>
+	<input type="submit" value="Register Account" />
 </form>
