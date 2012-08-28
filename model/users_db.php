@@ -24,6 +24,7 @@ class UsersDB {
 	}
 
 	public static function isValidUser($email, $password) {
+		
         $db = Database::getDB();
         $query = "SELECT user_id, password
                   FROM users
