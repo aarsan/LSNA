@@ -19,6 +19,9 @@ $app->post('/users/add', function () {
 	$user = new User($first_name, $last_name, $email, $password);
 	UsersDB::newUser($user);
 
+	header("Location: /login");
+	break;
+
 });
 
 ?>
