@@ -14,10 +14,6 @@ $app->get('/home', function () {
     require('./model/properties.php');
     require('./model/properties_db.php');
 
-    $properties = PropertiesDB::viewQueue($user_id);
-    include('./view/temp.php');
-    break;
-
     ob_start();
     include('./assets/scripts/post.js');
     $ajax = ob_get_contents();
