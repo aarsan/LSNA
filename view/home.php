@@ -18,8 +18,8 @@
 		<?php foreach ($properties as $property) : ?>
 		<tr>
 			<td><a href="#"><?php echo $property->getNumber(); ?></a></td>
-			<td><?php echo $property->getStreet(); ?></td>
-			<td><?php echo $property->getZip(); ?></td>
+			<td><a href="#"><?php echo $property->getStreet(); ?></a></td>
+			<td><a href="#"><?php echo $property->getZip(); ?></a></td>
 		</tr>
 		<?php endforeach; ?>
 	</tbody>
