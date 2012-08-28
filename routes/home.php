@@ -8,12 +8,15 @@ $app->get('/home', function () {
     }
 
     $user_id = $_SESSION['user_id'];
-    include('./view/temp.php');
-    break;
+    
 
     require('./model/database.php');
     require('./model/properties.php');
     require('./model/properties_db.php');
+
+    $properties = PropertiesDB::viewQueue($user_id);
+    include('./view/temp.php');
+    break;
 
     ob_start();
     include('./assets/scripts/post.js');

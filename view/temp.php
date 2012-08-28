@@ -1,3 +1,3 @@
 <?php
-var_dump($user_id);
+var_dump($properties);
 ?>
