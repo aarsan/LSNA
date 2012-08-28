@@ -12,6 +12,7 @@ $app->post('/users/add', function () {
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 
+	require('./model/database.php');
 	require('./model/users.php');
 	require('./model/users_db.php');
 
