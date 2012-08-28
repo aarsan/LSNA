@@ -34,7 +34,7 @@ $app->get('/properties/list', function () {
 
 });
 
-$app->get('/properties/new', function() {
+$app->get('/properties/new', function () {
     
     ob_start();
     include('./assets/scripts/post.js');
@@ -43,6 +43,15 @@ $app->get('/properties/new', function() {
     $action = "<a href=\"/users/logout\">logout</a>";
     include('./view/new_property.php');
 
+});
+
+$app->get('/properties/modify/:prop_id', function ($prop_id) {
+	require('./model/database.php');
+	require('./model/properties.php');
+	require('./model/properties_db.php');
+
+	
+	include('./view/mod_property.php');
 });
 
 ?>
