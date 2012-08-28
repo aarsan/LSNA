@@ -7,7 +7,15 @@ $app->get('/users/register', function () {
 });
 
 $app->get('/users/login', function () {
-    include('./view/login.html');
+    include('./view/login.php');
+
+});
+
+$app->get('/users/logout', function () {
+	$_SESSION = array();
+    session_destroy();
+    //$login_message = 'Logged Out';
+    include('./view/login.php');
 
 });
 
