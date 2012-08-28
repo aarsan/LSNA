@@ -20,7 +20,7 @@
 	<tbody>
 		<?php foreach ($properties as $property) : ?>
 		<tr>
-			<td></td>
+			<td><?php echo $property->getStreet(); ?></td>
 		</tr>
 		<?php endforeach; ?>
 	</tbody>
