@@ -25,6 +25,8 @@ $app->post('/users/add', function () {
 });
 
 $app->post('/users/login', function () {
+	require('./model/database.php');
+	require('./model/users_db.php');
 
 	$valid = UsersDB::isValidUser($email, $password);
 
