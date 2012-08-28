@@ -11,6 +11,7 @@ $app = new Slim(array(
 require('./routes/lsna.php');
 require('./routes/properties.php');
 require('./routes/users.php');
+require('./routes/home.php');
 
 
 $app->run();
