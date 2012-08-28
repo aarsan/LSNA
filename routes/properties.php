@@ -38,7 +38,7 @@ $app->get('/properties/new', function() {
     $ajax = ob_get_contents();
     ob_end_clean();
 
-    include('./view/new_property.html');
+    include('./view/new_property.php');
 
 });
 
