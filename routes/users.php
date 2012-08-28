@@ -15,6 +15,7 @@ $app->get('/users/logout', function () {
 	$_SESSION = array();
     session_destroy();
     //$login_message = 'Logged Out';
+    $action = "<a href=\"/users/register\">register</a>";
     include('./view/login.php');
 
 });
