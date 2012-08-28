@@ -31,4 +31,15 @@ $app->get('/properties/list', function () {
 
 });
 
+$app->get('/properties/new', function() {
+    
+    ob_start();
+    include('./assets/scripts/post.js');
+    $ajax = ob_get_contents();
+    ob_end_clean();
+
+    include('./view/new_property.html');
+
+});
+
 ?>
