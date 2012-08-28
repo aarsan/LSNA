@@ -22,7 +22,7 @@ class UsersDB {
         $statement->execute();
 		$statement->closeCursor();
 	}
-/*
+
 	public static function isValidUser($email, $password) {
 
         $db = Database::getDB();
@@ -35,9 +35,9 @@ class UsersDB {
         $statement->execute();
         $row = $statement->fetch();
         $statement->closeCursor();
-        return $row ? ($row['password'] == $password, $row['password']) : FALSE;
+        return $row ? ($row['password'] == $password) : FALSE;
     }
-*/
+
 }
 
 ?>
