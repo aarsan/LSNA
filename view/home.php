@@ -27,6 +27,7 @@
 			<td><a href="#"><?php echo $property->getStreet(); ?></a></td>
 			<td><a href="#"><?php echo $property->getZip(); ?></a></td>
 			<td>0/20 complete</td>
+			<td><a href="#">continue</a></td>
 		</tr>
 		<?php endforeach; ?>
 	</tbody>
