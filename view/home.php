@@ -16,7 +16,7 @@
 <table>
 	<thead>
 		<th>Number</th>
-		<th>Address</th>
+		<th>Street Name</th>
 		<th>Zip</th>
 		<th>Progress</th>
 	</thead>
