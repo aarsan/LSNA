@@ -1,7 +1,7 @@
 <?php
 
 $app->get('/users/register', function () {
-    include('./view/new_user_form.php');
+    include('./view/user_register.php');
 
 });
 
