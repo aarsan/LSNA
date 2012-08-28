@@ -24,4 +24,21 @@ $app->post('/users/add', function () {
 
 });
 
+$app->post('/users/login', function () {
+
+	$valid = UsersDB::isValidUser($email, $password);
+
+	if ($valid == TRUE) {
+		$_SESSION['is_valid_member'] = TRUE;
+        header("Location: /home");
+        break;
+
+    } else {
+        $error = "<div id=\"content\"><h2>Password is incorrect.</h2><p>please go back and enter your correct password</p><a href=\"/profiles/$member_ID\">go back</a></div>";
+        include('./view/errors/error.php');
+        break;
+    }
+
+});
+
 ?>
