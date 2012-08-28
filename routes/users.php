@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $app->get('/users/register', function () {
     include('./view/user_register.php');
@@ -26,7 +27,7 @@ $app->post('/users/add', function () {
 });
 
 $app->post('/users/login', function () {
-	session_start();
+
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	require('./model/database.php');

@@ -1,5 +1,6 @@
 <?php
 
+
 //this redirects from root to login page
 $app->get('/', function () {
     header("Location: /users/login");
