@@ -61,6 +61,7 @@ class PropertiesDB {
                   WHERE queue.user_id = :user_id";
         $statement = $db->prepare($query);
         $statement->bindValue(':user_id', $user_id);
+        $statement->execute();
         $properties = array();
 			foreach ($statement as $row) {
 				$property = new Property($row['full_street_name'], 
