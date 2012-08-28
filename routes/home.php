@@ -3,7 +3,7 @@
 $app->get('/home', function () {
 
 	if (!isset($_SESSION['is_valid_member'])) {
-        header("Location: /login/");
+        header("Location: /users/login");
         break;
     }
 
@@ -14,5 +14,6 @@ $app->get('/home', function () {
 
     include('./view/home.html');
 });
+
 
 ?>

@@ -2,27 +2,11 @@
 
 //this redirects from root to login page
 $app->get('/', function () {
-    header("Location: /login");
+    header("Location: /users/login");
     break;
 
 });
 
-//login page
-$app->get('/login', function () {
-    include('./view/login.html');
-
-});
-
-//this is the home page
-$app->get('/home', function () {
-
-    ob_start();
-    include('./assets/scripts/post.js');
-    $ajax = ob_get_contents();
-    ob_end_clean();
-
-    include('./view/home.html');
-});
 
 $app->get('/search', function () {
     include('./view/search.html');
