@@ -30,5 +30,9 @@ class User {
         return $this->email;
     }
 
+    public function getPassword() {
+    	return $this->password;
+    }
+
 }
 ?>
