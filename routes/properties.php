@@ -27,7 +27,7 @@ $app->get('/properties/list', function () {
 	require('./model/properties_db.php');
 
 	$properties = PropertiesDB::listProperties();
-	$action = "$action = "<a href=\"/users/logout\">logout</a>";
+	$action = $action = "<a href=\"/users/logout\">logout</a>";
 	include('./view/all_properties.php');
 
 });
