@@ -1,3 +1,5 @@
+<?php include('./view/header.php'); ?>
+
 <h2>Enter a new property into the system</h2>
 <h4>Start by validating the street name with the City of Chicago's street database.</h4>
 <?php echo $ajax; ?>

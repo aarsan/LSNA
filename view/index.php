@@ -1,3 +1,5 @@
+<?php include('./view/header.php'); ?>
+
 <script LANGUAGE="JavaScript" SRC="/scripts/jquery-1.7.1.js"></script>
 <h2>Welcome to LSNA</h2>
 </br>
