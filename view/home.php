@@ -20,7 +20,9 @@
 	<tbody>
 		<?php foreach ($properties as $property) : ?>
 		<tr>
+			<td><?php echo $property->getNumber(); ?></td>
 			<td><?php echo $property->getStreet(); ?></td>
+			<td><?php echo $property->getZip(); ?></td>
 		</tr>
 		<?php endforeach; ?>
 	</tbody>
