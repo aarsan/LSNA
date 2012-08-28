@@ -16,7 +16,7 @@ $app->get('/users/login', function () {
 $app->get('/users/logout', function () {
 	$_SESSION = array();
     session_destroy();
-    header("Location: /login");
+    header("Location: /users/login");
 	break;
 
 });
