@@ -46,7 +46,7 @@ $app->post('/users/login', function () {
 
 	if ($valid == TRUE) {
 		$_SESSION['is_valid_member'] = TRUE;
-		$_SESSION['user_id'] = UsersDB::getUserInfo($email)->getUserId();
+		//$_SESSION['user_id'] = UsersDB::getUserInfo($email)->getUserId();
 		//$user_id = $_SESSION['user_id'];
 		//include('./view/temp.php');
 		//break;
