@@ -7,6 +7,7 @@ $app->get('/users/register', function () {
 });
 
 $app->get('/users/login', function () {
+	$action = "<a href=\"/users/register\">register</a>";
     include('./view/login.php');
 
 });
@@ -14,9 +15,8 @@ $app->get('/users/login', function () {
 $app->get('/users/logout', function () {
 	$_SESSION = array();
     session_destroy();
-    //$login_message = 'Logged Out';
-    $action = "<a href=\"/users/register\">register</a>";
-    include('./view/login.php');
+    header("Location: /login");
+	break;
 
 });
 
