@@ -1,3 +1,3 @@
 <?php
-var_dump($street, $number, $zip);
+var_dump($_SESSION['user_id']);
 ?>
