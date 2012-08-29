@@ -64,6 +64,7 @@ $app->get('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 	require('./model/questions.php');
 	require('./model/questions_db.php');
 
+	$question = QuestionsDB::getQuestion($q_id)->getQVerb();
 	$action = "<a href=\"/users/logout\">logout</a>";
 	include('./view/question.php');
 
