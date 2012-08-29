@@ -57,4 +57,16 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
 	include('./view/mod_property.php');
 });
 
+$app->get('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
+	require('./model/database.php');
+	require('./model/properties.php');
+	require('./model/properties_db.php');
+	require('./model/questions.php');
+	require('./model/questions_db.php');
+
+	$action = "<a href=\"/users/logout\">logout</a>";
+	include('./view/question.php');
+
+});
+
 ?>
