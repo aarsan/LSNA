@@ -75,8 +75,23 @@ $app->get('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 		$option2 = "No"; 
 	}
 	
-
 	include('./view/question.php');
+
+});
+
+$app->post('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id, $answer_verb) {
+	$answer_verb = $_POST['answer_verb'];
+	
+	require('./model/database.php');
+	require('./model/properties.php');
+	require('./model/properties_db.php');
+	require('./model/questions.php');
+	require('./model/questions_db.php');
+	require('./model/answers.php');
+	require('./model/answers_db.php');
+
+	$answer = new Answer($answer_verb, $q_id, $prop_id);
+	AnswerDB::newAnswer($answer);
 
 });
 
