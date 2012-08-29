@@ -28,7 +28,7 @@ class QuestionsDB {
 		$statement->execute();
 		$row = $statement->fetch();
 		$question = new Question($row['q_verb']);
-		return $question
+		return $question;
 		$statement->closeCursor();
 
 	}
