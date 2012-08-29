@@ -24,10 +24,10 @@
 		<?php foreach ($properties as $property) : ?>
 		<tr>
 			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>"><?php echo $property->getNumber(); ?></a></td>
-			<td><a href="#"><?php echo $property->getStreet(); ?></a></td>
-			<td><a href="#"><?php echo $property->getZip(); ?></a></td>
+			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>"><?php echo $property->getStreet(); ?></a></td>
+			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>"><?php echo $property->getZip(); ?></a></td>
 			<td><strong>0/20</strong></td>
-			<td><a href="#">continue</a></td>
+			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>">continue</a></td>
 		</tr>
 		<?php endforeach; ?>
 	</tbody>
