@@ -6,12 +6,13 @@
     		<th>Question</th>
     	</thead>
     	<tbody>
-<?php foreach ($questions AS $question) : ?>
+	<?php foreach ($questions AS $question) : ?>
 	        <tr>
 	        	<td>No</td>
 	        	<td><?php echo $question->getQVerb(); ?></td>
 	        </tr>
-<?php endforeach; ?>
+	<?php endforeach; ?>
     	</tbody>
     </table>
+</br>
 <a href="/home">home</a>
