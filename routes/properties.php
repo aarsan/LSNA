@@ -66,6 +66,16 @@ $app->get('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 
 	$question = QuestionsDB::getQuestion($q_id)->getQVerb();
 	$action = "<a href=\"/users/logout\">logout</a>";
+
+	if ($q_id == 1) {
+		$option1 = "Occupied";
+		$option2 = "Vacant";
+	} else {
+		$option1 = "Yes";
+		$option2 = "No"; 
+	}
+	
+
 	include('./view/question.php');
 
 });
