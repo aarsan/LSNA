@@ -50,7 +50,7 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
 	require('./model/properties.php');
 	require('./model/properties_db.php');
 
-	
+	$action = "<a href=\"/users/logout\">logout</a>";
 	include('./view/mod_property.php');
 });
 
