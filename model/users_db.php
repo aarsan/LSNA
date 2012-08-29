@@ -51,6 +51,7 @@ class UsersDB {
         	             $row['email'],
         	             $row['user_id']);
         return $user;
+        $statement->closeCursor();
 
     }
 
