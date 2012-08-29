@@ -80,10 +80,13 @@ $app->get('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 });
 
 $app->post('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
-	
+
 	if (isset($_POST['answer_verb'])) {
 		$answer_verb = $_POST['answer_verb'];
-	}	
+	}
+
+	include('./view/temp.php');
+	break;
 	
 	require('./model/database.php');
 	require('./model/properties.php');

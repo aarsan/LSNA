@@ -1,3 +1,3 @@
 <?php
-var_dump($properties);
+var_dump($_POST);
 ?>
