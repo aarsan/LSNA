@@ -9,8 +9,8 @@ class Property {
         $this->street = $street;
         $this->number = $number;
         $this->zip = $zip;
-
     }
+    
     public function getPropId() {
         return $this->prop_id;
     }
