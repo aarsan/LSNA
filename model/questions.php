@@ -1,4 +1,5 @@
 <?php
+
 class Question {
 	private $q_id;
 	private $q_verb;
@@ -20,4 +21,5 @@ class Question {
     }
 
 }
+
 ?>

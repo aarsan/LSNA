@@ -49,7 +49,10 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
 	require('./model/database.php');
 	require('./model/properties.php');
 	require('./model/properties_db.php');
+	require('./model/questions.php');
+	require('./model/questions_db.php');
 
+	$questions = QuestionDB::listQuestions();
 	$action = "<a href=\"/users/logout\">logout</a>";
 	include('./view/mod_property.php');
 });
