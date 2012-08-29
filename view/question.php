@@ -8,3 +8,4 @@
 </select>
 <input type="submit" value="Submit" />
 </form>
+<a href="/properties/modify/<?php echo $prop_id; ?>back</a>"
