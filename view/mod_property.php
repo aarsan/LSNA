@@ -9,7 +9,7 @@
 	<?php foreach ($questions AS $question) : ?>
 	        <tr>
 	        	<td>No</td>
-	        	<td><?php echo $question->getQVerb(); ?></td>
+	        	<td><a href="#"><?php echo $question->getQVerb(); ?></a></td>
 	        </tr>
 	<?php endforeach; ?>
     	</tbody>
