@@ -3,8 +3,8 @@
 <p><?php echo $question; ?></p>
 <form method="post" action="/properties/<?php echo $prop_id; ?>/question/<?php echo $q_id; ?>">
 <select name="answer_verb">
-   <option value="option1"><?php echo $option1; ?></option>
-   <option value="option2"><?php echo $option2; ?></option>
+   <option value="<?php echo $option1; ?>"><?php echo $option1; ?></option>
+   <option value="<?php echo $option2; ?>"><?php echo $option2; ?></option>
 </select>
 <input type="submit" value="Submit" />
 </form>
