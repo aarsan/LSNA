@@ -97,6 +97,9 @@ $app->post('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 	$answer = new Answer($answer_verb, $q_id, $prop_id);
     AnswersDB::newAnswer($answer);
 
+    header("Location: /properties/modify/$prop_id");
+	break;
+
 });
 
 ?>
