@@ -18,6 +18,21 @@ class QuestionsDB {
 		$statement->closeCursor();
 	}
 
+	public static function getQuestion($q_id) {
+		$db = Database::getDB();
+		$query = "SELECT q_verb
+		          FROM questions
+		          WHERE q_id = :q_id";
+		$statement = $db->prepare($query);
+		$statement->bindValue(':q_id', $q_id);
+		$statement->execute();
+		$row = $statement->fetch();
+		$question = new Question($row['q_verb']);
+		return $question
+		$statement->closeCursor();
+
+	}
+
 }
 
 ?>
