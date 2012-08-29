@@ -20,6 +20,10 @@ class Question {
         $this->q_verb = $value;
     }
 
+    public function setQId($value) {
+        $this->q_id = $value;
+    }
+
 }
 
 ?>
