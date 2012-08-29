@@ -1,6 +1,6 @@
 <?php
 
-class PropertiesDB {
+class QuestionsDB {
 	public static function listQuestions() {
 		$db = Database::getDB();
 		$query = "SELECT * 
