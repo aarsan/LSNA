@@ -1,5 +1,5 @@
 <?php include('./view/header.php'); ?>
-<h2>Please select the question you'd like to work on.</h2>
+<h2>Click on the question to answer it.</h2>
     <table>
     	<thead>
     		<th>Completed?</th>
