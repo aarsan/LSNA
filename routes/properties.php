@@ -95,7 +95,7 @@ $app->post('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 	require('./model/answers_db.php');
 
 	$answer = new Answer($answer_verb, $q_id, $prop_id);
-	AnswerDB::newAnswer($answer);
+	//AnswerDB::newAnswer($answer);
 
 });
 
