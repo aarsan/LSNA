@@ -85,9 +85,7 @@ $app->post('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 		$answer_verb = $_POST['answer_verb'];
 	}
 
-	include('./view/temp.php');
-	break;
-	
+
 	require('./model/database.php');
 	require('./model/properties.php');
 	require('./model/properties_db.php');
