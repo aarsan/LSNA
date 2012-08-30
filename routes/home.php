@@ -19,7 +19,7 @@ $app->get('/home', function () {
     $ajax = ob_get_contents();
     ob_end_clean();
 
-    $count = QuestionsDB::getQuestionCount();
+    $total = QuestionsDB::getQuestionCount();
     $completed = 4;
 
     $action = "<a href=\"/users/logout\">logout</a>";
