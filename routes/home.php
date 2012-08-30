@@ -20,7 +20,7 @@ $app->get('/home', function () {
     ob_end_clean();
 
     $q_count = QuestionsDB::getQuestionCount();
-    $a_count = AnswersDB::getAnswerCount($prop_id);
+    //$a_count = AnswersDB::getAnswerCount($prop_id);
 
     $action = "<a href=\"/users/logout\">logout</a>";
     $status = "$completed of $total";
