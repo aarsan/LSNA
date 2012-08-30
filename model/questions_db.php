@@ -100,6 +100,9 @@ class QuestionsDB {
         $statement = $db->prepare($query);
         $statement->bindValue(':prop_id', $prop_id);
 		$statement->execute();
+		$ua_count = $statement->fetch();
+		$ua_count = $ua_count['unanswered_count'];
+		return $ua_count;
 		$statement->closeCursor();
 
 	}
