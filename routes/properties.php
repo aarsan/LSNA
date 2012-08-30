@@ -98,6 +98,15 @@ $app->get('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_i
     
     $action = "<a href=\"/users/logout\">logout</a>";
 	$answer = AnswersDB::selectAnswer($prop_id, $q_id);
+
+	if ($q_id == 1) {
+		$option1 = "Occupied";
+		$option2 = "Vacant";
+	} else {
+		$option1 = "Yes";
+		$option2 = "No"; 
+	}
+
 	include('./view/modify_answer.php');
 
 });
