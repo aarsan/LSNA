@@ -45,6 +45,28 @@ class QuestionsDB {
 
 	}
 
+	public static function answeredQuestions($prop_id) {
+		$db = Database::getDB();
+		$query = "SELECT questions.q_verb
+                  FROM queue
+                  INNER JOIN answers ON answers.prop_id = queue.prop_id
+                  INNER JOIN questions ON questions.q_id = answers.q_id
+                  WHERE queue.prop_id = :prop_id";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':prop_id', $prop_id);
+		$statement->execute();
+		$questions = array();
+			foreach ($statement as $row) {
+				$question = new Question($row['q_verb']); 
+				$question->setQId($row['q_id']);
+				$questions[] = $question;
+			}
+		return $questions;
+		
+		$statement->closeCursor();
+
+	}
+
 }
 
 ?>

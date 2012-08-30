@@ -7,7 +7,7 @@
     		<th>Question</th>
     	</thead>
     	<tbody>
-	<?php foreach ($questions AS $question) : ?>
+	<?php foreach ($answered_questions AS $answered) : ?>
 	        <tr>
 	        	<td>No</td>
 	        	<td><a href="/properties/<?php echo $prop_id; ?>/question/<?php echo $question->getQId(); ?>"><?php echo $question->getQVerb(); ?></a></td>

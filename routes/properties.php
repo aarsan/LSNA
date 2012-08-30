@@ -52,7 +52,8 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
 	require('./model/questions.php');
 	require('./model/questions_db.php');
 
-	$questions = QuestionsDB::listQuestions();
+	$answered_questions = QuestionsDB::answeredQuestion($prop_id);
+	//$questions = QuestionsDB::answeredQuestions($prop_id);
 	$action = "<a href=\"/users/logout\">logout</a>";
 	include('./view/mod_property.php');
 });
