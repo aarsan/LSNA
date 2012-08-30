@@ -54,10 +54,13 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
 
     $unanswered_question_count = QuestionsDB::unAnsweredQuestionCount($prop_id);
     $unanswered_question_count = intval($unanswered_question_count);
-    include('./view/temp.php');
-
-
-	$message = "Click on the question to answer it.";
+    
+    if ($unanswered_question_count == 0) {
+    	$message = "You completed all the questions for this property."
+    } else {
+    	$message = "Click on the question to answer it.";
+    }
+    	
 	$answered_questions = QuestionsDB::answeredQuestions($prop_id);
 	$unanswered_questions = QuestionsDB::unAnsweredQuestions($prop_id);
 	$action = "<a href=\"/users/logout\">logout</a>";
