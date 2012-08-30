@@ -55,7 +55,11 @@ class PropertiesDB {
 
 	public static function viewQueue($user_id) {
 		$db = Database::getDB();
-		$query = "SELECT properties.prop_id, full_street_name, house_number, zip
+		$query = "SELECT properties.prop_id, full_street_name, 
+		                 house_number, zip, (SELECT count(answer_id) 
+                                             FROM answers
+                                             INNER JOIN queue ON queue.prop_id = answers.prop_id 
+                                             AND queue.user_id) AS a_count
                   FROM properties
                   INNER JOIN queue ON queue.prop_id = properties.prop_id
                   WHERE queue.user_id = :user_id";
@@ -68,6 +72,7 @@ class PropertiesDB {
 					                     $row['house_number'], 
 					                     $row['zip']);
 				$property->setPropId($row['prop_id']);
+				$property->setAnswerCount($row['a_count']);
 				$properties[] = $property;
 			}
 		return $properties;
