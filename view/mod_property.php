@@ -11,7 +11,7 @@
     <?php endforeach; ?>
     </table>
 <h2>Questions already answered</h2>
-<p>Click on the question to modify your answer.</p>
+<p>Click on the question to modify your answer:</p>
     <table>
 	<?php foreach ($answered_questions AS $question) : ?>
 	        <tr>
