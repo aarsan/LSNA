@@ -54,8 +54,8 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
 
     $unanswered_question_count = QuestionsDB::unAnsweredQuestionCount($prop_id);
     include('./view/temp.php');
-    break;
-    
+    die;
+
 	$message = "Click on the question to answer it.";
 	$answered_questions = QuestionsDB::answeredQuestions($prop_id);
 	$unanswered_questions = QuestionsDB::unAnsweredQuestions($prop_id);
