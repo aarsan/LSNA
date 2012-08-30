@@ -47,7 +47,7 @@ class QuestionsDB {
 
 	public static function answeredQuestions($prop_id) {
 		$db = Database::getDB();
-		$query = "SELECT questions.q_verb
+		$query = "SELECT questions.q_id, questions.q_verb
                   FROM queue
                   INNER JOIN answers ON answers.prop_id = queue.prop_id
                   INNER JOIN questions ON questions.q_id = answers.q_id
