@@ -89,6 +89,8 @@ class QuestionsDB {
 		
 		$statement->closeCursor();
 
+	}
+
 }
 
 ?>
