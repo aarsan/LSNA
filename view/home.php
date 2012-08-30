@@ -26,7 +26,7 @@
 			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>"><?php echo $property->getNumber(); ?></a></td>
 			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>"><?php echo $property->getStreet(); ?></a></td>
 			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>"><?php echo $property->getZip(); ?></a></td>
-			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $property->getAnswerCount(); ?>/<?php echo $q_count; ?></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $property->getAnswerCount(); ?>/<?php echo $q_count; ?></td>
 			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>">Finish</a></td>
 		</tr>
 		<?php endforeach; ?>
