@@ -24,7 +24,7 @@ $app->get('/home', function () {
 
     $action = "<a href=\"/users/logout\">logout</a>";
     $properties = PropertiesDB::viewQueue($user_id);
-    $a_count = $properties->getAnswerCount();
+    //$a_count = $properties->getAnswerCount();
     include('./view/home.php');
 
 });
