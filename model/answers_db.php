@@ -34,7 +34,7 @@ class AnswersDB {
 
 	public static function selectAnswer($prop_id, $q_id) {
 		$db = Database::getDB();
-		$query = "SELECT answers.answer_id, questions.q_verb
+		$query = "SELECT answers.answer_id, questions.q_verb, answers.answer_verb
                   FROM answers
                   INNER JOIN questions ON questions.q_id = answers.q_id
                   WHERE prop_id = :prop_id AND questions.q_id = :q_id";
