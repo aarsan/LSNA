@@ -69,7 +69,7 @@ class QuestionsDB {
 
 	public static function unAnsweredQuestions($prop_id) {
 		$db = Database::getDB();
-		$query = "SELECT questions.q_verb
+		$query = "SELECT questions.q_id, questions.q_verb
                   FROM questions
                   WHERE questions.q_id NOT IN (SELECT questions.q_id
                                                FROM queue
