@@ -52,7 +52,7 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
 	require('./model/questions.php');
 	require('./model/questions_db.php');
 
-    //$unanswered_question_count = QuestionsDB::unAnsweredQuestionCount($prop_id);
+    $unanswered_question_count = QuestionsDB::unAnsweredQuestionCount($prop_id);
     //include('./view/temp.php');
 
 
