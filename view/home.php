@@ -18,7 +18,7 @@
 		<th>Number</th>
 		<th>Full Street Name</th>
 		<th>Zip</th>
-		<th>Progress</th>
+		<th>Questions Remaining</th>
 	</thead>
 	<tbody>
 		<?php foreach ($properties as $property) : ?>
@@ -26,8 +26,8 @@
 			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>"><?php echo $property->getNumber(); ?></a></td>
 			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>"><?php echo $property->getStreet(); ?></a></td>
 			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>"><?php echo $property->getZip(); ?></a></td>
-			<td><strong><?php echo $property->getAnswerCount(); ?>/<?php echo $q_count; ?></strong></td>
-			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>">Finish Questionaire</a></td>
+			<td><?php echo $property->getAnswerCount(); ?>/<?php echo $q_count; ?></td>
+			<td><a href="/properties/modify/<?php echo $property->getPropId(); ?>">Finish</a></td>
 		</tr>
 		<?php endforeach; ?>
 	</tbody>
