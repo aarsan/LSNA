@@ -1,6 +1,10 @@
 <?php include('./view/header.php'); ?>
-<h2>Questionaire for 7009 N. Keeler, 60646</h2>
+<h1>Questionaire for 7009 N. Keeler, 60646</h1>
+<h2>Unanswered Questions:</h2>
 <p>Click on the question to answer it.</p>
+
+<h2>Questions already answered</h2>
+<p>Click on the question to modify your answer.</p>
     <table>
 	<?php foreach ($answered_questions AS $question) : ?>
 	        <tr>
