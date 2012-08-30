@@ -15,7 +15,7 @@
     <table>
 	<?php foreach ($answered_questions AS $question) : ?>
 	        <tr>
-	        	<td><a href="/properties/<?php echo $prop_id; ?>/question/<?php echo $question->getQId(); ?>"><?php echo $question->getQVerb(); ?></a></td>
+	        	<td><a href="/properties/<?php echo $prop_id; ?>/question/<?php echo $question->getQId(); ?>/update"><?php echo $question->getQVerb(); ?></a></td>
 	        </tr>
 	<?php endforeach; ?>
     </table>
