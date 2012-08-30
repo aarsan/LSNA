@@ -9,7 +9,6 @@ $app->get('/home', function () {
 
     $user_id = $_SESSION['user_id'];
     
-
     require('./model/database.php');
     require('./model/properties.php');
     require('./model/properties_db.php');
@@ -19,8 +18,11 @@ $app->get('/home', function () {
     $ajax = ob_get_contents();
     ob_end_clean();
 
-    $action = "<a href=\"/users/logout\">logout</a>";
+    $total = 20;
+    $completed = 4;
 
+    $action = "<a href=\"/users/logout\">logout</a>";
+    $status = "$completed of $total";
     $properties = PropertiesDB::viewQueue($user_id);
     include('./view/home.php');
 
