@@ -1,6 +1,6 @@
 <?php include('./view/header.php'); ?>
-<h1>Questionaire for 7009 N. Keeler, 60646</h1>
-<h2>Click on the question to answer it.</h2>
+<h2>Questionaire for 7009 N. Keeler, 60646</h2>
+<p>Click on the question to answer it.</p>
     <table>
     	<thead>
     		<th>Completed?</th>
