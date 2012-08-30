@@ -18,7 +18,7 @@
 		<th>Number</th>
 		<th>Full Street Name</th>
 		<th>Zip</th>
-		<th>Questions Remaining</th>
+		<th>Questions Answered</th>
 	</thead>
 	<tbody>
 		<?php foreach ($properties as $property) : ?>
