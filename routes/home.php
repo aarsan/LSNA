@@ -21,9 +21,9 @@ $app->get('/home', function () {
 
     $q_count = QuestionsDB::getQuestionCount();
     //$a_count = AnswersDB::getAnswerCount($prop_id);
+    $a_count = 4;
 
     $action = "<a href=\"/users/logout\">logout</a>";
-    $status = "$completed of $total";
     $properties = PropertiesDB::viewQueue($user_id);
     include('./view/home.php');
 
