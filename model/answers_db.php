@@ -42,6 +42,7 @@ class AnswersDB {
 		$statement->bindValue(':prop_id', $prop_id);
 		$statement->bindValue(':q_id', $q_id);
         $statement->execute();
+        $answer = $statement->fetch();
 
 
 	}
