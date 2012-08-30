@@ -62,10 +62,14 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
     }
     	
 	$answered_questions = QuestionsDB::answeredQuestions($prop_id);
+
+	//working on this:
+	
 	$unanswered_questions = QuestionsDB::unAnsweredQuestions($prop_id);
 	$action = "<a href=\"/users/logout\">logout</a>";
 	include('./view/mod_property.php');
 });
+
 
 $app->get('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 	require('./model/database.php');
@@ -89,12 +93,12 @@ $app->get('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 
 });
 
+
 $app->post('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 
 	if (isset($_POST['answer_verb'])) {
 		$answer_verb = $_POST['answer_verb'];
 	}
-
 
 	require('./model/database.php');
 	require('./model/properties.php');
