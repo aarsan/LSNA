@@ -1,3 +1,3 @@
 <?php
-var_dump($answer);
+var_dump($unanswered_question_count);
 ?>
