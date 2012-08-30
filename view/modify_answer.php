@@ -1,6 +1,6 @@
 <?php include('./view/header.php'); ?>
-<h2>Please complete the question below.</h2>
-<p><?php echo $question; ?></p>
+<h2>Modify your answer:</h2>
+<p><?php echo $answer; ?></p>
 <form method="post" action="/properties/<?php echo $prop_id; ?>/question/<?php echo $q_id; ?>">
 <select name="answer_verb">
    <option value="<?php echo $option1; ?>"><?php echo $option1; ?></option>

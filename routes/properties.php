@@ -93,6 +93,11 @@ $app->get('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 });
 
 $app->get('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_id) {
+	require('./model/database.php');
+	require('./model/answers_db.php');
+
+	$answer = "This was your answer";
+	include('./view/modify_answer.php');
 
 });
 
