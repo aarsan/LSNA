@@ -17,5 +17,19 @@ class AnswersDB {
         $statement->bindValue(':prop_id', $prop_id);
         $statement->execute();
 	}
+
+	public static function getAnswerCount($prop_id) {
+		$db = Database::getDB();
+		$query = "SELECT COUNT(answer_id) AS a_count
+		          FROM answers
+		          WHERE prop_id = :prop_id";
+		$statement = $db->prepare($query);
+		$statement->bindValue(':prop_id', $prop_id);
+        $statement->execute();
+        $a_count = $statement->fetch();
+		$a_count = $a_count['a_count'];
+		return $a_count;
+
+	}
 }
 ?>

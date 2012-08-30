@@ -39,9 +39,9 @@ class QuestionsDB {
 		          FROM questions";
 		$statement = $db->prepare($query);
 		$statement->execute();
-		$total = $statement->fetch();
-		$total = $total['q_count'];
-		return $total;
+		$q_count = $statement->fetch();
+		$q_count = $q_count['q_count'];
+		return $q_count;
 
 	}
 

@@ -19,8 +19,8 @@ $app->get('/home', function () {
     $ajax = ob_get_contents();
     ob_end_clean();
 
-    $total = QuestionsDB::getQuestionCount();
-    $completed = 4;
+    $q_count = QuestionsDB::getQuestionCount();
+    $a_count = AnswersDB::getAnswerCount($prop_id);
 
     $action = "<a href=\"/users/logout\">logout</a>";
     $status = "$completed of $total";
