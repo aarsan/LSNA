@@ -89,7 +89,7 @@ class QuestionsDB {
 	}
 
 	public static function unAnsweredQuestionCount($prop_id) {
-
+        $db = Database::getDB();
 		$query = "SELECT COUNT(questions.q_id) AS unanswered_count
                   FROM questions
                   WHERE questions.q_id NOT IN (SELECT questions.q_id
