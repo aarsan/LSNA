@@ -12,13 +12,14 @@ $app->get('/home', function () {
     require('./model/database.php');
     require('./model/properties.php');
     require('./model/properties_db.php');
+    require('./model/questions_db.php');
 
     ob_start();
     include('./assets/scripts/post.js');
     $ajax = ob_get_contents();
     ob_end_clean();
 
-    $total = 20;
+    $count = QuestionsDB::getQuestionCount();
     $completed = 4;
 
     $action = "<a href=\"/users/logout\">logout</a>";

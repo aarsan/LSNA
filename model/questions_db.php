@@ -33,6 +33,18 @@ class QuestionsDB {
 
 	}
 
+	public static function getQuestionCount() {
+		$db = Database::getDB();
+		$query = "SELECT COUNT(q_id) as q_count
+		          FROM questions";
+		$statement = $db->prepare($query);
+		$statement->execute();
+		$count = $statement->fetch();
+		$count = $count['q_count'];
+		return $count;
+
+	}
+
 }
 
 ?>
