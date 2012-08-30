@@ -4,6 +4,7 @@ class Property {
 	private $street;
 	private $number;
 	private $zip;
+    private $a_count;
 
 	public function __construct($street, $number, $zip) {
         $this->street = $street;
@@ -25,6 +26,10 @@ class Property {
 
     public function getZip() {
         return $this->zip;
+    }
+
+    public function getAnswerCount() {
+        return $this->a_count;
     }
 
     public function setPropId($value) {
