@@ -43,6 +43,7 @@ class AnswersDB {
 		$statement->bindValue(':q_id', $q_id);
         $statement->execute();
         $answer = $statement->fetch();
+        return $answer;
 
 
 	}
