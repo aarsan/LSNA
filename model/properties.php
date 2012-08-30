@@ -35,5 +35,9 @@ class Property {
     public function setPropId($value) {
         $this->prop_id = $value;
     }
+
+    public function setAnswerCount($value) {
+        $this->a_count = $value;
+    }
 }
 ?>

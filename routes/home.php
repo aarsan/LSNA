@@ -20,11 +20,11 @@ $app->get('/home', function () {
     ob_end_clean();
 
     $q_count = QuestionsDB::getQuestionCount();
-    //$a_count = AnswersDB::getAnswerCount($prop_id);
-    $a_count = 4;
+    //$a_count = 4;
 
     $action = "<a href=\"/users/logout\">logout</a>";
     $properties = PropertiesDB::viewQueue($user_id);
+    $a_count = $properties->getAnswerCount();
     include('./view/home.php');
 
 });
