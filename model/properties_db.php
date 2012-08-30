@@ -79,6 +79,33 @@ class PropertiesDB {
 		
 		$statement->closeCursor();
 	}
+
+	public static function submitCompletedProperty($prop_id, $user_id) {
+		$db = Database::getDB();
+		$db->beginTransaction();
+        
+        $query = "INSERT INTO passes
+	              	(prop_id, user_id)
+                  VALUES
+	                (:prop_id, :user_id)";
+	    $statement = $db->prepare($query);
+        $statement->bindValue(':prop_id', $prop_id);
+        $statement->bindValue(':user_id', $user_id);
+        $statement->execute();
+
+	    $query = "DELETE FROM queue
+                  WHERE prop_id = :prop_id AND user_id = :user_id";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':prop_id', $prop_id);
+        $statement->bindValue(':user_id', $user_id);
+        $statement->execute();
+
+		$db->commit();
+
+		$statement->closeCursor();
+
+
+	}
 }
 
 ?>

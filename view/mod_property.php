@@ -2,7 +2,7 @@
 <h1>Questionaire for 7009 N. Keeler, 60646</h1>
 <p>-------------------------------------------------------------------------------------------------------------</p>
 <h2>Unanswered Questions:</h2>
-<p>Click on the question to answer it.</p>
+<p><?php echo $message; ?></p>
     <table>
     <?php foreach ($unanswered_questions AS $question) : ?>
             <tr>
