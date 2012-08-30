@@ -53,7 +53,7 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
 	require('./model/questions_db.php');
 
 	$answered_questions = QuestionsDB::answeredQuestions($prop_id);
-	//$questions = QuestionsDB::answeredQuestions($prop_id);
+	$unanswered_questions = QuestionsDB::unAnsweredQuestions($prop_id);
 	$action = "<a href=\"/users/logout\">logout</a>";
 	include('./view/mod_property.php');
 });
