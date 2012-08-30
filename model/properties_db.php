@@ -58,8 +58,8 @@ class PropertiesDB {
 		$query = "SELECT properties.prop_id, full_street_name, 
 		                 house_number, zip, (SELECT count(answer_id) 
                                              FROM answers
-                                             INNER JOIN queue ON queue.prop_id = answers.prop_id 
-                                             AND queue.user_id) AS a_count
+                                             INNER JOIN properties ON answers.prop_id = properties.prop_id
+                                             WHERE queue.prop_id = answers.prop_id) AS a_count
                   FROM properties
                   INNER JOIN queue ON queue.prop_id = properties.prop_id
                   WHERE queue.user_id = :user_id";
