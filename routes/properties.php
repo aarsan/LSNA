@@ -58,7 +58,8 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
     if ($unanswered_question_count == 0) {
     	$message = "You completed all the questions for this property.</br>
     	            <p>Click the submit button if you're ready to commit the answers.</p>
-    	            <form method=\"post\" action=\"/property/$prop_id/submit\"></form>";
+    	            <form method=\"post\" action=\"/property/$prop_id/submit\">
+    	            <input type=\"submit\" value=\"Submit the Property\" /></form>";
     } else {
     	$message = "Click on the question to answer it.";
     }
