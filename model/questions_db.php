@@ -14,7 +14,6 @@ class QuestionsDB {
 				$questions[] = $question;
 			}
 		return $questions;
-		
 		$statement->closeCursor();
 	}
 
@@ -62,7 +61,6 @@ class QuestionsDB {
 				$questions[] = $question;
 			}
 		return $questions;
-		
 		$statement->closeCursor();
 
 	}
@@ -86,7 +84,22 @@ class QuestionsDB {
 				$questions[] = $question;
 			}
 		return $questions;
-		
+		$statement->closeCursor();
+
+	}
+
+	public static function unAnsweredQuestionCount($prop_id) {
+
+		$query = "SELECT COUNT(questions.q_id) AS unanswered_count
+                  FROM questions
+                  WHERE questions.q_id NOT IN (SELECT questions.q_id
+                                               FROM queue
+                                               INNER JOIN answers ON answers.prop_id = queue.prop_id
+                                               INNER JOIN questions ON questions.q_id = answers.q_id
+                                               WHERE queue.prop_id = :prop_id)";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':prop_id', $prop_id);
+		$statement->execute();
 		$statement->closeCursor();
 
 	}
