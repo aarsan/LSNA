@@ -3,7 +3,6 @@
 <p><?php echo $answer['q_verb']; ?></p>
 <p>You answered: <?php echo $answer['answer_verb']; ?></p>
 </br>
-</br>
 <h4>New Answer</h4>
 <form method="post" action="/properties/<?php echo $prop_id; ?>/question/<?php echo $q_id; ?>">
 <select name="answer_verb">
