@@ -201,11 +201,9 @@ $app->get('/properties/:prop_id/view', function ($prop_id) {
 	require('./model/answers.php');
 
 	$property = PropertiesDB::getPropertyInfo($prop_id);
-	
     $street = $property->getStreet();
     $number = $property->getNumber();
     $zip = $property->getZip();
-
     $property_name = $number . $street . $zip;
 
     $answers = AnswersDB::listAnswers($prop_id);
