@@ -73,6 +73,8 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
 });
 
 
+////////////////////////////////////////////////////////////////////////////////
+
 $app->get('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 	require('./model/database.php');
 	require('./model/properties.php');
@@ -95,6 +97,8 @@ $app->get('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 
 });
 
+////////////////////////// *** MODIFY ANSWER FORM *** ///////////////////////////
+
 $app->get('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_id) {
 	require('./model/database.php');
 	require('./model/answers_db.php');
@@ -113,6 +117,27 @@ $app->get('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_i
 	include('./view/modify_answer.php');
 
 });
+
+////////////////////////// *** UPDATE ANSWER *** //////////////////////////////////////
+
+$app->post('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_id) {
+
+	if(isset($_POST['answer'])) {
+		$answer = $_POST['answer'];
+
+	} else {
+		//return an error
+	}
+
+	AnswersDB::updateAnswer($prop_id, $q_id, $answer);
+
+    header("Location: /home");
+	break;
+
+});
+
+
+///////////////////////////////////////////////////////////////////////////////
 
 $app->post('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 
