@@ -3,7 +3,7 @@
 <p><?php echo $answer['q_verb']; ?></p>
 <p>You answered: <?php echo $answer['answer_verb']; ?></p>
 <h4>New Answer</h4>
-<form method="post" action="/properties/<?php echo $prop_id; ?>/question/<?php echo $q_id; ?>">
+<form method="post" action="/properties/<?php echo $prop_id; ?>/question/<?php echo $q_id; ?>/update">
 <select name="answer_verb">
    <option value="<?php echo $option1; ?>"><?php echo $option1; ?></option>
    <option value="<?php echo $option2; ?>"><?php echo $option2; ?></option>
