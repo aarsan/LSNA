@@ -190,4 +190,10 @@ $app->post('/property/submit', function () {
 
 });
 
+$app->get('/properties/:prop_id/view', function ($prop_id) {
+
+	include('./view/view_property.php');
+
+});
+
 ?>
