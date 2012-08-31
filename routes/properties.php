@@ -73,7 +73,12 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
     	$message = "Click on the question to answer it.";
     }
     
-    $property_name = "7009 N. Keeler Ave, 60646";
+    $property = PropertiesDB::getPropertyInfo($prop_id);
+    $street = $property->getStreet();
+    $number = $property->getNumber();
+    $zip = $property->getZip();
+
+    $property_name = $number . $street . $zip;
 
 	$answered_questions = QuestionsDB::answeredQuestions($prop_id);
 	$unanswered_questions = QuestionsDB::unAnsweredQuestions($prop_id);
@@ -141,7 +146,6 @@ $app->post('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_
 	}
 
 	AnswersDB::updateAnswer($prop_id, $q_id, $answer);
-
     header("Location: /properties/modify/$prop_id");
 	break;
 
@@ -182,15 +186,15 @@ $app->post('/property/submit', function () {
 	}
 
 	$user_id = $_SESSION['user_id'];
-
 	PropertiesDB::submitCompletedProperty($prop_id, $user_id);
-
 	header("Location: /home");
 	break;
 
 });
 
+///////////// *** VIEW PROPERTY INFORMATION / QUESTIONS *** ///////////////
 $app->get('/properties/:prop_id/view', function ($prop_id) {
+	require('./model/database.php');
 
 	include('./view/view_property.php');
 

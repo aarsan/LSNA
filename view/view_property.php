@@ -1,1 +1,1 @@
-<h2>View Property</h2>
+<h2>Property Information</h2>
