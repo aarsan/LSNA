@@ -122,8 +122,8 @@ $app->get('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_i
 
 $app->post('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_id) {
 
-	if(isset($_POST['answer'])) {
-		$answer_verb = $_POST['answer'];
+	if(isset($_POST['answer_verb'])) {
+		$answer = $_POST['answer_verb'];
 
 	} else {
 		//return an error
