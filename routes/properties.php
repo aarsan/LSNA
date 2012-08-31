@@ -206,6 +206,8 @@ $app->get('/properties/:prop_id/view', function ($prop_id) {
 
     $property_name = $number . $street . $zip;
 
+    $answers = AnswersDB::listAnswers($prop_id);
+
 	include('./view/view_property.php');
 
 });
