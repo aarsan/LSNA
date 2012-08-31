@@ -195,6 +195,15 @@ $app->post('/property/submit', function () {
 ///////////// *** VIEW PROPERTY INFORMATION / QUESTIONS *** ///////////////
 $app->get('/properties/:prop_id/view', function ($prop_id) {
 	require('./model/database.php');
+	require('./model/properties_db.php');
+	require('./model/properties.php');
+
+	$property = PropertiesDB::getPropertyInfo($prop_id);
+    $street = $property->getStreet();
+    $number = $property->getNumber();
+    $zip = $property->getZip();
+
+    $property_name = $number . $street . $zip;
 
 	include('./view/view_property.php');
 
