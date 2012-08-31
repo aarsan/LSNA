@@ -8,3 +8,4 @@
 		</tr>
 	</table>
 <?php endforeach; ?>
+<a href="/home">home</a>
