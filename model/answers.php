@@ -25,6 +25,10 @@ class Answer {
         return $this->prop_id;
     }
 
+    public function getQuestionVerb() {
+        return $this->q_verb;
+    }
+
     public function setQustionVerb($value) {
         $this->q_verb = $value;
     }

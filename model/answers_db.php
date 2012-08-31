@@ -72,7 +72,8 @@ class AnswersDB {
 			foreach ($statement as $row) {
 				$answer = new Answer($row['answer_verb'],
 					                 $row['q_id'],
-					                 $row['prop_id']); 
+					                 $row['prop_id']);
+				$answer->setQuestionVerb($row['q_verb']);
 				$answers[] = $answer;
 			}
 		return $answers;
