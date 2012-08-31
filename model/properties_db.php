@@ -104,6 +104,15 @@ class PropertiesDB {
 
 		$statement->closeCursor();
 
+	}
+
+	public static function getPropertyInfo($prop_id) {
+		$db = Database::getDB();
+		$query = "SELECT * FROM properties
+		          WHERE prop_id = :prop_id";
+		$statement = $db->prepare($query);
+        $statement->bindValue(':prop_id', $prop_id);
+        $statement->execute();
 
 	}
 }
