@@ -4,6 +4,7 @@
 <?php foreach ($answers AS $answer) : ?>
 	<table>
 		<tr>
+			<td>Question</td>
 			<td><?php echo $answer->getAnswerVerb(); ?></td>
 		</tr>
 	</table>
