@@ -5,8 +5,6 @@
 </br>
 <a href="/properties/new">Enter a new property</a>
 </br>
-<a href="/properties/search">Update an existing Property</a>
-</br>
 <a href="/properties/list">list all properties</a>
 </br>
 </br>
