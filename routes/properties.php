@@ -171,4 +171,22 @@ $app->post('/properties/:prop_id/question/:q_id', function ($prop_id, $q_id) {
 
 });
 
+/////////// *** SUBMIT COMPLETED PROPERTY *** ///////////////////////
+$app->post('/property/submit', function () {
+	require('./model/database.php');
+	require('./model/properties_db.php');
+
+	if (isset($_POST['prop_id'])) {
+		$prop_id = $_POST['prop_id'];
+	}
+
+	$user_id = $_SESSION['user_id'];
+
+	PropertiesDB::submitCompletedProperty($prop_id, $user_id);
+
+	header("Location: /home");
+	break;
+
+});
+
 ?>
