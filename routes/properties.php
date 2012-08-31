@@ -199,6 +199,7 @@ $app->get('/properties/:prop_id/view', function ($prop_id) {
 	require('./model/properties.php');
 
 	$property = PropertiesDB::getPropertyInfo($prop_id);
+	
     $street = $property->getStreet();
     $number = $property->getNumber();
     $zip = $property->getZip();
