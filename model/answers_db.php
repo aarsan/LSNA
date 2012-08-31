@@ -45,7 +45,19 @@ class AnswersDB {
         $answer = $statement->fetch();
         return $answer;
 
-
 	}
+
+	public static function updateAnswer($prop_id, $q_id, $answer) {
+		$db = Database::getDB();
+		$query = "UPDATE answers
+                  SET answer_verb = :answer
+                  WHERE prop_id = :prop_id AND q_id = :q_id";
+        $statement = $db->prepare($query);
+		$statement->bindValue(':prop_id', $prop_id);
+		$statement->bindValue(':q_id', $q_id);
+		$statement->bindValue(':answer', $answer);
+        $statement->execute();
+	}
+
 }
 ?>
