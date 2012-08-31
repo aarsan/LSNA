@@ -113,6 +113,7 @@ class PropertiesDB {
 		$statement = $db->prepare($query);
         $statement->bindValue(':prop_id', $prop_id);
         $statement->execute();
+        $property = $statement->fetch();
         $property = new Property($statement['full_street_name'], 
 					             $statement['house_number'], 
 					             $statement['zip']);
