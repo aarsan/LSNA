@@ -133,7 +133,7 @@ $app->post('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_
 
 	AnswersDB::updateAnswer($prop_id, $q_id, $answer);
 
-    header("Location: /home");
+    header("Location: /properties/modify/$prop_id");
 	break;
 
 });
