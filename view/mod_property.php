@@ -1,5 +1,5 @@
 <?php include('./view/header.php'); ?>
-<h1>Questionaire for 7009 N. Keeler, 60646</h1>
+<h1>Questionaire for: <?php echo $property_name; ?></h1>
 <p>-------------------------------------------------------------------------------------------------------------</p>
 <h2>Unanswered Questions:</h2>
 <p><?php echo $message; ?></p>
