@@ -75,7 +75,7 @@ class AnswersDB {
 					                 $row['prop_id']); 
 				$answers[] = $answer;
 			}
-		return $answer;
+		return $answers;
 		$statement->closeCursor();
 	}
 
