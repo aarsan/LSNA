@@ -29,7 +29,7 @@ class Answer {
         return $this->q_verb;
     }
 
-    public function setQustionVerb($value) {
+    public function setQuestionVerb($value) {
         $this->q_verb = $value;
     }
 
