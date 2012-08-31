@@ -197,6 +197,8 @@ $app->get('/properties/:prop_id/view', function ($prop_id) {
 	require('./model/database.php');
 	require('./model/properties_db.php');
 	require('./model/properties.php');
+	require('./model/answers_db.php');
+	require('./model/answers.php');
 
 	$property = PropertiesDB::getPropertyInfo($prop_id);
 	
