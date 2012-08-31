@@ -121,6 +121,8 @@ $app->get('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_i
 ////////////////////////// *** UPDATE ANSWER *** //////////////////////////////////////
 
 $app->post('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_id) {
+	require('./model/database.php');
+	require('./model/answers_db.php');
 
 	if(isset($_POST['answer_verb'])) {
 		$answer = $_POST['answer_verb'];
@@ -129,7 +131,7 @@ $app->post('/properties/:prop_id/question/:q_id/update', function ($prop_id, $q_
 		//return an error
 	}
 
-	//AnswersDB::updateAnswer($prop_id, $q_id, $answer);
+	AnswersDB::updateAnswer($prop_id, $q_id, $answer);
 
     header("Location: /home");
 	break;
