@@ -113,9 +113,9 @@ class PropertiesDB {
 		$statement = $db->prepare($query);
         $statement->bindValue(':prop_id', $prop_id);
         $statement->execute();
-        $property = new Property($row['full_street_name'], 
-					             $row['house_number'], 
-					             $row['zip']);
+        $property = new Property($statement['full_street_name'], 
+					             $statement['house_number'], 
+					             $statement['zip']);
         return $property;
 		$statement->closeCursor();
 	}
