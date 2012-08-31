@@ -5,6 +5,7 @@ class Answer {
 	private $answer_verb;
 	private $q_id;
 	private $prop_id;
+    private $q_verb;
 
 	public function __construct ($answer_verb, $q_id, $prop_id) {
 		$this->answer_verb = $answer_verb;
@@ -22,6 +23,10 @@ class Answer {
 
     public function getPropId() {
         return $this->prop_id;
+    }
+
+    public function setQustionVerb($value) {
+        $this->q_verb = $value;
     }
 
 }
