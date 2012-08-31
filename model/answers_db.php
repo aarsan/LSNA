@@ -59,5 +59,25 @@ class AnswersDB {
         $statement->execute();
 	}
 
+	public static function listAnswers($prop_id) {
+		$db = Database::getDB();
+		$query = "SELECT questions.q_verb, answer_verb, answers.q_id, answers.prop_id
+                  FROM answers
+                  INNER JOIN questions on questions.q_id = answers.q_id
+                  WHERE prop_id = :prop_id";
+		$statement = $db->prepare($query);
+		$statement->bindValue(':prop_id', $prop_id);
+		$statement->execute();
+		$answers = array();
+			foreach ($statement as $row) {
+				$answer = new Answer($row['answer_verb'],
+					                 $row['q_id'],
+					                 $row['prop_id']); 
+				$answers[] = $answer;
+			}
+		return $answer;
+		$statement->closeCursor();
+	}
+
 }
 ?>
