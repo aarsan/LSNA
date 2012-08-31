@@ -3,10 +3,15 @@
 <p>Below are the answers for this property</p>
 <?php foreach ($answers AS $answer) : ?>
 	<table>
-		<tr>
-			<td><?php echo $answer->getQuestionVerb(); ?></td>
-			<td><?php echo $answer->getAnswerVerb(); ?></td>
-		</tr>
+		<thead>
+			<th>Question</th>
+			<th>Answer</th>
+		<tbody>
+			<tr>
+				<td><?php echo $answer->getQuestionVerb(); ?></td>
+				<td><?php echo $answer->getAnswerVerb(); ?></td>
+			</tr>
+		</tbody>
 	</table>
 <?php endforeach; ?>
 <a href="/home">home</a>
