@@ -3,7 +3,7 @@
 <?php foreach ($answers AS $answer) : ?>
 	<table>
 		<tr>
-			<td><?php echo $answer->getAnswer(); ?></td>
+			<td><?php echo $answer->getAnswerVerb(); ?></td>
 		</tr>
 	</table>
 <?php endforeach; ?>
