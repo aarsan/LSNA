@@ -1,6 +1,6 @@
 <?php
 
-// This URI adds a new property into the DB /
+/////////// *** adds a new property into the DB *** //////////
 $app->post('/properties/add', function () {
 
 	$user_id = $_SESSION['user_id'];
@@ -23,6 +23,9 @@ $app->post('/properties/add', function () {
 
 });
 
+
+///////////////////////////////////////////////////////////////////
+
 $app->get('/properties/list', function () {
 	require('./model/database.php');
 	require('./model/properties.php');
@@ -34,6 +37,8 @@ $app->get('/properties/list', function () {
 
 });
 
+/////////////////////////////////////////////////////////////////////////
+
 $app->get('/properties/new', function () {
     
     ob_start();
@@ -44,6 +49,9 @@ $app->get('/properties/new', function () {
     include('./view/new_property.php');
 
 });
+
+
+///////////////////////// *** MODIFY PROPERTY *** /////////////////////////////////
 
 $app->get('/properties/modify/:prop_id', function ($prop_id) {
 	require('./model/database.php');
@@ -63,10 +71,10 @@ $app->get('/properties/modify/:prop_id', function ($prop_id) {
     } else {
     	$message = "Click on the question to answer it.";
     }
-    	
+    
+    $property_name = "7009 N. Keeler Ave, 60646";
+
 	$answered_questions = QuestionsDB::answeredQuestions($prop_id);
-
-
 	$unanswered_questions = QuestionsDB::unAnsweredQuestions($prop_id);
 	$action = "<a href=\"/users/logout\">logout</a>";
 	include('./view/mod_property.php');
