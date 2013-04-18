@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 import datetime
+from django.template import loader
 
 def index(request):
     now = datetime.datetime.now()
-    html = "Welcome to the LSNA inventory application! It is now %s" %now
-    return HttpResponse(html)
+    template = loader.get_template('inventory/index.html')
+    return HttpResponse(template.render)
 
