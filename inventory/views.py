@@ -1,9 +1,9 @@
-from django.http import HttpResponse
 import datetime
-from django.template import loader
+from django.shortcuts import render
+from django.contrib.auth.models import User
 
 def index(request):
-    now = datetime.datetime.now()
-    template = loader.get_template('inventory/index.html')
-    return HttpResponse(template.render)
-
+    time = datetime.datetime.now()
+    user = User.objects.all()
+    context = {'time': time, 'user': user}
+    return render(request, 'index.html', context)
