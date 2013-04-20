@@ -28,4 +28,7 @@ def users(request):
     user = User.objects.get(pk=1)
     context = {'user': user}
     return render(request, 'users.html', context)
-    
+
+def properties(request):
+    context = {}
+    return render(request, 'properties.html', context)    
