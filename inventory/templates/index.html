@@ -1,3 +1,12 @@
+<html>
 <h1>Welcome to the LSNA inventory App.</h1>
 <p>The time is: {{ time }} </p>
-<p>You are: {{ user }} </p>
+<p>Total number of users in the system: {{ users.count }} </p>
+
+<form id='login-form' action="login" method="post">
+<div class='login-field'><input type='text' name='username' placeholder=' Username'></div>
+<div class='password-field'><input type='password' name='password' placeholder=' Password'spellcheck='false'></div> <br />
+<input type='submit' value='SUBMIT' spellcheck='false'>
+</form>
+
+</html>
