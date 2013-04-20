@@ -3,7 +3,7 @@
 <p>The time is: {{ time }} </p>
 <p>Total number of users in the system: {{ users.count }} </p>
 
-<form id='login-form' action="login" method="post">
+<form id='login-form' action='home' method='get'> {% csrf_token %}
 <div class='login-field'><input type='text' name='username' placeholder=' Username'></div>
 <div class='password-field'><input type='password' name='password' placeholder=' Password'spellcheck='false'></div> <br />
 <input type='submit' value='SUBMIT' spellcheck='false'>

@@ -1,6 +1,7 @@
 import datetime
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.core.context_processors import csrf
 
 def index(request):
     time = datetime.datetime.now()
@@ -15,4 +16,9 @@ def home(request):
 
 def login(request):
     return render()
+
+def users(request):
+    user = User.objects.get(pk=1)
+    context = {'user': user}
+    return render(request, 'users.html', context)
     
