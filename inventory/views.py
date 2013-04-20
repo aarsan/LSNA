@@ -1,7 +1,8 @@
 import datetime
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.core.context_processors import csrf
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
 
 def index(request):
     time = datetime.datetime.now()
@@ -10,12 +11,18 @@ def index(request):
     return render(request, 'index.html', context)
 
 def home(request):
-    users = User.objects.all()
-    context = {'users': users}
-    return render(request, 'home.html', context)
-
-def login(request):
-    return render()
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            context = {'users': users}
+            return render(request, 'home.html', context)
+        else:
+            return HttpResponse("Your account is inactive.")
+    else:
+        return HttpResponse("Invalid user name or password.")
 
 def users(request):
     user = User.objects.get(pk=1)
