@@ -17,8 +17,7 @@ def home(request):
     if user is not None:
         if user.is_active:
             login(request, user)
-            context = {'users': users}
-            return render(request, 'home.html', context)
+            return render(request, 'home.html')
         else:
             return HttpResponse("Your account is inactive.")
     else:
