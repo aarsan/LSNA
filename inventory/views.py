@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
+from inventory.models import Property
 
 def index(request):
     time = datetime.datetime.now()
@@ -30,7 +31,8 @@ def users(request):
 
 def properties(request):
     if request.user.is_authenticated():
-        context = {}
+        p = Property.objects.get(pk=1)
+        context = {'p': p}
         return render(request, 'properties.html', context)
     else:
         return HttpResponse("you must be logged in to see this page. <a href='/'>home</a>")
