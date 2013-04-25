@@ -31,7 +31,7 @@ def users(request):
 
 def properties(request):
     if request.user.is_authenticated():
-        p = Property.objects.get(pk=1)
+        p = Property.objects.all()
         context = {'p': p}
         return render(request, 'properties.html', context)
     else:
