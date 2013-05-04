@@ -1,7 +1,13 @@
 <html>
   <h3>Add new property form</h3><p><a href='../logout'>logout</a></p>
+
 <form id='add-property-form' action='new' method='post'> {% csrf_token %}
-<div class='address-field'><input type='text' name='address'></div>
+<div class='address-field'>
+<label for='number'>Number: </label>
+<input id='number' type='text' name='number'></br></br>
+<label for='street'>Street: </label>
+<input id='street' type='text' name='street'>
+</div>
 <input type='submit' value='SUBMIT' spellcheck='false'>
 </form>
 </html>

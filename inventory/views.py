@@ -42,9 +42,17 @@ def new_property(request):
         context = {}
         return render(request, 'add_new_property.html', context)
     elif request.method == 'POST':
-        user = User.objects.get(pk=1)
-        content = "Welcome, " + user.first_name
-        return HttpResponse(content)
+        number = request.POST['number']
+        street = request.POST['street']
+        numcount = len(number)
+        streetcount = len(street) 
+        if numcount < 1 or streetcount < 1:
+            return HttpResponse("Please fill out all fields and try again")
+        else:
+            user = User.objects.get(pk=1)
+            date = datetime.datetime.now()
+            content = "Welcome, " + user.first_name + ". " + "Today's date is: " + date.strftime("%m/%d/%y") + number + street
+            return HttpResponse(content)
     else:
         return HttpResponse("Method not allowed.")
 
