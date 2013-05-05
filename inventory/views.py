@@ -47,12 +47,13 @@ def new_property(request):
         numcount = len(number)
         streetcount = len(street) 
         if numcount < 1 or streetcount < 1:
-            return HttpResponse("Please fill out all fields and try again")
+            return HttpResponse("Please fill out all fields and try again. <a href='new'>back</a> ")
         else:
             user = User.objects.get(pk=1)
             date = datetime.datetime.now()
-            content = "Welcome, " + user.first_name + ". " + "Today's date is: " + date.strftime("%m/%d/%y") + number + street
-            return HttpResponse(content)
+            ''' context = "Welcome, " + user.first_name + ". " + "Today's date is: " + date.strftime("%m/%d/%y") + number + street '''
+            context = {'user': user, 'date': date, 'number': number, 'street': street}
+        return render(request, 'add_new_property_confirm.html', context)
     else:
         return HttpResponse("Method not allowed.")
 
