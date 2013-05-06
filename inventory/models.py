@@ -8,6 +8,9 @@ class Property(models.Model):
     date_added  = models.DateTimeField('date added')
     added_by = models.ForeignKey(User)
 
+    def __unicode__(self):
+        return self.number + " " + self.street
+
 class Question(models.Model):
     question = models.CharField(max_length=100)
     
@@ -22,6 +25,7 @@ class Pass(models.Model):
 
 class Queue(models.Model):
     date_added = models.DateTimeField('date added')
+    user = models.ForeignKey(User)
     property = models.ForeignKey(Property)
     answers = models.ManyToManyField(Answer)
 

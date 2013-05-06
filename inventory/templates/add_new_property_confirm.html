@@ -3,3 +3,10 @@
 <p>Street: {{ street }}</p></br>
 <p>Added By: {{ user }}</p></br>
 <p>Added On: {{ date }}</p></br>
+<form action='add' method='post'> {% csrf_token %}
+<input type='hidden' name='number' value='{{ number }}'>
+<input type='hidden' name='street' value='{{ street }}'>
+<input type='hidden' name='user' value='{{ user }}'>
+<input type='hidden' name='date' value='{{ date }}'>
+<input type='submit' value='SUBMIT' spellcheck='false'>
+</form>
