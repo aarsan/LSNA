@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
-from inventory.models import Property
+from inventory.models import Property, Queue
 
 def index(request):
     time = datetime.datetime.now()
@@ -18,7 +18,9 @@ def home(request):
     if user is not None:
         if user.is_active:
             login(request, user)
-            return render(request, 'home.html')
+            queues= Queue.objects.all()
+            context = {'queues': queues }
+            return render(request, 'home.html', context)
         else:
             return HttpResponse("Your account is inactive.")
     else:
@@ -63,9 +65,15 @@ def add_property(request):
         number = request.POST['number']
         street = request.POST['street']
         added_by = request.POST['user']
+        user = User.objects.get(pk=1)
+        date = '2013-05-05 20:30'
         date_added = request.POST['date']
+        p = Property(number=number, street=street, zip='11215', date_added=date, added_by=user)
+        p.save()
+        q = Queue(date_added=date, user=user, property=p)
+        q.save()
         context = {}
-        return HttpResponse("Property Added <a href='/'>home</a>" + number + street + added_by + date_added)
+        return HttpResponse("Property Added <a href='/'>home</a>")
     else:
         return redirect('/')
 

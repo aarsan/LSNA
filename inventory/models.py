@@ -28,4 +28,7 @@ class Queue(models.Model):
     user = models.ForeignKey(User)
     property = models.ForeignKey(Property)
     answers = models.ManyToManyField(Answer)
+    
+    def __unicode__(self):
+        return unicode(self.property)
 

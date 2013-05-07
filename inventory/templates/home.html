@@ -2,5 +2,11 @@
     <p>Hello, {{ user }} <a href="logout">logout<a/></p>
     <h3>This is your property queue:</h3>
 
+<ul>
+{% for q in queues %}
+    <li>{{ q.property }}</li>
+{% endfor %}
+</ul>
+
 <a href="properties/new"> Add new property<a/>
 </html>
