@@ -1,12 +1,19 @@
 <html>
     <p>Hello, {{ user }} <a href="logout">logout<a/></p>
+<ul>
+  <li><a href="users/{{ user.id }}">your profile</a></li>
+  <li><a href="users/{{ user.id }}/queue">your queue</a></li>
+  <li><a href="properties/new">add new property</a></li>
+</ul>
+
+
+
     <h3>This is your property queue:</h3>
 
 <ul>
 {% for q in queues %}
-    <li>{{ q.property }}</li>
+    <li><a href="#">{{ q.property }}</a></li>
 {% endfor %}
 </ul>
 
-<a href="properties/new"> Add new property<a/>
 </html>

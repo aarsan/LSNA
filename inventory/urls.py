@@ -5,6 +5,8 @@ from inventory import views
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^home', views.home, name='home'),
+    url(r'^users/(?P<user_id>\d+)/queue', views.queue, name='queue'),
+    url(r'^users/(?P<user_id>\d+)', views.user_detail, name='user_detail'),
     url(r'^users', views.users, name='users'),
     url(r'^properties/new', views.new_property, name='new_property'),
     url(r'^properties/add', views.add_property, name='add_property'),

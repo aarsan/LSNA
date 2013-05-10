@@ -31,6 +31,11 @@ def users(request):
     context = {'user': user}
     return render(request, 'users.html', context)
 
+def user_detail(request, user_id):
+    user = User.objects.get(pk=user_id)
+    context = {'user': user}
+    return render(request, 'user_detail.html', context)
+
 def properties(request):
     if request.user.is_authenticated():
         p = Property.objects.all()
@@ -76,6 +81,11 @@ def add_property(request):
         return HttpResponse("Property Added <a href='/'>home</a>")
     else:
         return redirect('/')
+
+def queue(request):
+    queues= Queue.objects.all()
+    context = {'queues': queues }
+    return render(request, 'queue.html', context)
 
 def logout_view(request):
     logout(request)
