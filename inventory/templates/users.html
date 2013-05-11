@@ -1,3 +1,7 @@
 <html>
-  <h3>Logged in as: {{ user }}  </h3>
+  <ul>
+      {% for u in user %}
+        <li><a href="/users/{{ u.id }}">{{ u }}</a></li>
+      {% endfor %}
+  </ul>
 </html>

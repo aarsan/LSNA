@@ -30,5 +30,5 @@ class Queue(models.Model):
     answers = models.ManyToManyField(Answer)
     
     def __unicode__(self):
-        return unicode(self.property)
+        return unicode(self.user)
 

@@ -27,14 +27,18 @@ def home(request):
         return HttpResponse("Invalid user name or password.")
 
 def users(request):
-    user = User.objects.get(pk=1)
+    user = User.objects.all()
     context = {'user': user}
     return render(request, 'users.html', context)
 
 def user_detail(request, user_id):
-    user = User.objects.get(pk=user_id)
-    context = {'user': user}
-    return render(request, 'user_detail.html', context)
+    try:
+        user = User.objects.get(pk=user_id)
+        context = {'user': user}
+    except (KeyError, User.DoesNotExist):
+        return HttpResponse("User Not Found")
+    else:
+        return render(request, 'user_detail.html', context)
 
 def properties(request):
     if request.user.is_authenticated():
