@@ -61,7 +61,7 @@ def new_property(request):
         if numcount < 1 or streetcount < 1:
             return HttpResponse("Please fill out all fields and try again. <a href='new'>back</a> ")
         else:
-            user = User.objects.get(pk=1)
+            user = request.user.id
             date = datetime.datetime.now()
             context = {'user': user, 'date': date, 'number': number, 'street': street}
         return render(request, 'add_new_property_confirm.html', context)
@@ -74,7 +74,8 @@ def add_property(request):
         number = request.POST['number']
         street = request.POST['street']
         added_by = request.POST['user']
-        user = User.objects.get(pk=1)
+        user_id = request.user.id
+        user = User.objects.get(pk=user_id)
         date = '2013-05-05 20:30'
         date_added = request.POST['date']
         p = Property(number=number, street=street, zip='11215', date_added=date, added_by=user)
