@@ -86,10 +86,15 @@ def add_property(request):
     else:
         return redirect('/')
 
-def queue(request):
-    queues= Queue.objects.all()
-    context = {'queues': queues }
-    return render(request, 'queue.html', context)
+def queue(request, user_id):
+    user = User.objects.get(pk=user_id)
+    queue = Queue(user)
+    context = {'queue': queue }
+
+    if queue.DoesNotExist:
+        return HttpResponse("You have no properties in your queue. <a href='/home'>back</a>")
+    else:
+        return render(request, 'queue.html', context)
 
 def logout_view(request):
     logout(request)
