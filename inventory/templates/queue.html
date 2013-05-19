@@ -2,6 +2,6 @@
 <p>click on the property to complete survey</p>
 <ul>
 {% for q in queue %}
-    <li><a href='/properties/{{ q.property.id }}/survey'>{{ q.property }}</a></li>
+    <li><a href='/users/{{ user.id }}/queue/{{ q.id }}/survey'>{{ q.property }}</a></li>
 {% endfor %}
 </ul>
