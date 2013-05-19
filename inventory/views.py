@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
-from inventory.models import Property, Queue, Question
+from inventory.models import Property, Queue, Question, Answer
 
 def index(request):
     time = datetime.datetime.now()
@@ -112,8 +112,24 @@ def survey(request, queue_id, user_id):
     user = User.objects.get(pk=user_id)
     uaq = Question.objects.exclude(id__in = queue.answers.values('id'))
     aq = queue.answers.all()
-    context = {'aq': aq, 'uaq': uaq}
+    context = {'aq': aq, 'uaq': uaq, 'user': user, 'queue': queue}
     return render(request, 'survey.html', context)
 
-def question(request):
-    return render(request, 'question.html')
+def question(request, queue_id, user_id, q_id):
+    q_text = Question.objects.get(id=q_id)
+    context = {'q_id': q_id, 'q_text': q_text, 'queue_id': queue_id}
+    return render(request, 'question.html', context)
+
+def answer(request):
+    if request.method == "POST":
+        queue_id = request.POST['queue_id']
+        q_id = request.POST['q_id']
+        a = request.POST['answer']
+        queue = Queue.objects.get(pk=queue_id)
+        question = Question.objects.get(pk=q_id)
+        answer = Answer(answer=a, question=question)
+        answer.save()
+        queue.answers.add(answer)
+        return HttpResponse("your post worked")
+    else:
+        return HttpResponse("method not allowed")

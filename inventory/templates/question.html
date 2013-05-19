@@ -1,4 +1,10 @@
-</h2>This is question number 1</h2>
-<form>
-<input type=button name=submit>
+</h2>This is question number {{ q_id }}</h2><a href="../survey">back</a>
+<p>Queue ID is {{ queue_id }}</p>
+<p>{{ q_text }}</p>
+<form name="answer_form" action="/answer" method="post">{% csrf_token %}
+<input type="hidden" name="queue_id" value="{{ queue_id }}">
+<input type="hidden" name="q_id" value="{{ q_id }}">
+<input type="radio" name="answer" value="yes">Yes</br>
+<input type="radio" name="answer" value="no">No</br>
+<input type="submit" name="submit" value="Answer">
 </form>
