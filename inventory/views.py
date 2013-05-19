@@ -12,19 +12,25 @@ def index(request):
     return render(request, 'index.html', context)
 
 def home(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        if user.is_active:
-            login(request, user)
-            queues= Queue.objects.all()
-            context = {'queues': queues }
-            return render(request, 'home.html', context)
-        else:
-            return HttpResponse("Your account is inactive.")
+    if request.method == 'GET':
+        user = request.user.id
+        queues = Queue.objects.all()
+        context = {'queues': queues }
+        return render(request, 'home.html', context)
     else:
-        return HttpResponse("Invalid user name or password.")
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                queues= Queue.objects.all()
+                context = {'queues': queues }
+                return render(request, 'home.html', context)
+            else:
+                return HttpResponse("Your account is inactive.")
+        else:
+            return HttpResponse("Invalid user name or password.")
 
 def users(request):
     user = User.objects.all()
@@ -101,7 +107,9 @@ def logout_view(request):
     logout(request)
     return redirect('/')
 
-def survey(request, prop_id):
-    questions = Question.objects.all()
-    context = {'questions': questions}
+def survey(request, queue_id):
+    queue = Queue.objects.get(pk=queue_id)
+    uaq = Question.objects.exclude(id__in = queue.answers.values('id'))
+    aq = queue.answers.all()
+    context = {'aq': aq, 'uaq': uaq}
     return render(request, 'survey.html', context)

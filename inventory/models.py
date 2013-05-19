@@ -14,9 +14,12 @@ class Property(models.Model):
 class Question(models.Model):
     question = models.CharField(max_length=100)
     
+    def __unicode__(self):
+        return unicode(self.question)
+    
 class Answer(models.Model):
     answer = models.CharField(max_length=10)
-    question = models.ForeignKey(User)
+    question = models.ForeignKey(Question)
 
 class Pass(models.Model):
     date = models.DateTimeField('date surveyed')

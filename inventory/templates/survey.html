@@ -1,5 +1,12 @@
-<h2>Click on the question to answer it</h2>
-<ul>{% for q in questions %}
-       <li>{{ q.question }}</li>
+<a href='/home'>home</a>
+<p>Unanswered Questions:</a>
+<ul>{% for q in uaq %}
+       <li><a href='#'>{{ q.question }}</a></li>
+    {% endfor %}
+</ul>
+</br>
+<p>Answered Questions:</p>
+<ul>{% for q in aq %}
+       <li><a href='#'>{{ q.question }}</a></li>
     {% endfor %}
 </ul>
