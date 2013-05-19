@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
-from inventory.models import Property, Queue
+from inventory.models import Property, Queue, Question
 
 def index(request):
     time = datetime.datetime.now()
@@ -100,3 +100,8 @@ def queue(request, user_id):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+def survey(request, prop_id):
+    questions = Question.objects.all()
+    context = {'questions': questions}
+    return render(request, 'survey.html', context)

@@ -1,5 +1,7 @@
+<h3>All properties in your queue:</h3>
+<p>click on the property to complete survey</p>
 <ul>
 {% for q in queue %}
-    <li><a href="#">{{ q.property }}</a></li>
+    <li><a href='/properties/{{ q.property.id }}/survey'>{{ q.property }}</a></li>
 {% endfor %}
 </ul>
