@@ -112,7 +112,7 @@ def survey(request, queue_id, user_id):
     user = User.objects.get(pk=user_id)
     uaq = Question.objects.exclude(id__in = queue.answers.values('id'))
     aq = queue.answers.all()
-    context = {'aq': aq, 'uaq': uaq, 'user': user, 'queue': queue}
+    context = {'aq': aq, 'uaq': uaq, 'user': user, 'queue': queue, 'user_id': user_id}
     return render(request, 'survey.html', context)
 
 def question(request, queue_id, user_id, q_id):
@@ -125,11 +125,12 @@ def answer(request):
         queue_id = request.POST['queue_id']
         q_id = request.POST['q_id']
         a = request.POST['answer']
+        user_id = request.POST['user_id']
         queue = Queue.objects.get(pk=queue_id)
         question = Question.objects.get(pk=q_id)
         answer = Answer(answer=a, question=question)
         answer.save()
         queue.answers.add(answer)
-        return HttpResponse("your post worked")
+        return redirect('/users/' + user_id + '/queue/' + queue_id + '/survey')
     else:
         return HttpResponse("method not allowed")
