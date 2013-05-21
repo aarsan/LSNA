@@ -120,6 +120,20 @@ def question(request, queue_id, user_id, q_id):
     context = {'q_id': q_id, 'q_text': q_text, 'queue_id': queue_id}
     return render(request, 'question.html', context)
 
+def mod_question(request, queue_id, user_id, q_id):
+    if request.method == "POST":
+        answer = request.POST['answer']
+        a = Answer.objects.filter(pk=q_id)
+        a.update(answer=answer)
+        return HttpResponse(answer)
+    else:
+        q_text = Question.objects.get(id=q_id)
+        queue = Queue.objects.get(pk=queue_id)
+        a = queue.answers.get(question_id=q_id)
+        answer = a.answer
+        context = {'q_text': q_text, 'queue_id': queue_id, 'answer': answer}
+        return render(request, 'question_update.html', context)
+
 def answer(request):
     if request.method == "POST":
         queue_id = request.POST['queue_id']

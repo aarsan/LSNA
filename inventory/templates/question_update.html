@@ -1,0 +1,16 @@
+</h2><a href="../survey">back</a>
+<h1>Modify your answer</h2>
+<h3>You previously answered {{ answer }} </h3>
+<p>{{ q_text }}</p>
+<form name="answer_form" action="" method="post">{% csrf_token %}
+<input type="hidden" name="queue_id" value="{{ queue_id }}">
+<input type="hidden" name="q_id" value="{{ q_id }}">
+<input type="hidden" name="user_id" value="{{ user.id }}">
+<input type="radio" name="answer" value="yes">Yes</br>
+<input type="radio" name="answer" value="no">No</br>
+<input type="submit" name="submit" value="Update">
+</form>
+Queue ID: {{ queue_id }}</br>
+Question ID: {{ q_id }}</br>
+User ID: {{ user.id }} 
+

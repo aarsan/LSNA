@@ -7,6 +7,6 @@
 </br>
 <p>Answered Questions:</p>
 <ul>{% for q in aq %}
-       <li><a href='#'>{{ q.question }}</a></li>
+       <li><a href='/users/{{ user.id }}/queue/{{ queue.id }}/survey/{{ q.question_id }}/modify'>{{ q.question }}</a></li>
     {% endfor %}
 </ul>
