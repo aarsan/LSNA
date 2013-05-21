@@ -110,7 +110,7 @@ def logout_view(request):
 def survey(request, queue_id, user_id):
     queue = Queue.objects.get(pk=queue_id)
     user = User.objects.get(pk=user_id)
-    uaq = Question.objects.exclude(id__in = queue.answers.values('id'))
+    uaq = Question.objects.exclude(id__in = queue.answers.values('question_id'))
     aq = queue.answers.all()
     context = {'aq': aq, 'uaq': uaq, 'user': user, 'queue': queue, 'user_id': user_id}
     return render(request, 'survey.html', context)
