@@ -10,3 +10,9 @@
        <li><a href='/users/{{ user.id }}/queue/{{ queue.id }}/survey/{{ q.question_id }}/modify'>{{ q.question }}</a></li><p>Answer: {{ q.answer }} </p>
     {% endfor %}
 </ul>
+{% if uaq.exists %}
+{% else %}
+    <form>
+    <input type=submit value=submit>
+    </form>
+{% endif %}
