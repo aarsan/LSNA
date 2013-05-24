@@ -12,7 +12,7 @@
 
 <ul>
 {% for q in queues %}
-    <li><a href="#">{{ q.property }}</a></li>
+    <li><a href="#">{{ q.property }}</a>&nbsp; completed passes: {{ q.property.pass_set.count }} &nbsp; queues: {{ q.property.queue_set.count }}</li>
 {% endfor %}
 </ul>
 

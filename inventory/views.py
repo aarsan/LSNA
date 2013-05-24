@@ -151,3 +151,6 @@ def answer(request):
         return redirect('/users/' + user_id + '/queue/' + queue_id + '/survey')
     else:
         return HttpResponse("method not allowed")
+
+def submit(request, user_id, queue_id):
+    return HttpResponse("Property Submitted")

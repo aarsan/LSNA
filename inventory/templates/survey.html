@@ -12,7 +12,7 @@
 </ul>
 {% if uaq.exists %}
 {% else %}
-    <form>
+    <form name="submit_property_survey" action="/users/{{ user.id }}/queue/{{ queue.id }}/submit" method="post">{% csrf_token %}
     <input type=submit value=submit>
     </form>
 {% endif %}
