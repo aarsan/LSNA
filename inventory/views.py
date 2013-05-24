@@ -123,15 +123,18 @@ def question(request, queue_id, user_id, q_id):
 def mod_question(request, queue_id, user_id, q_id):
     if request.method == "POST":
         answer = request.POST['answer']
-        a = Answer.objects.filter(pk=q_id)
+        queue = Queue.objects.get(pk=queue_id)
+        a = queue.answers.get(question_id=q_id)
+        a_id = a.id
+        a = Answer.objects.filter(pk=a_id)
         a.update(answer=answer)
-        return HttpResponse(answer)
+        return redirect('/users/' + user_id + '/queue/' + queue_id + '/survey')
     else:
         q_text = Question.objects.get(id=q_id)
         queue = Queue.objects.get(pk=queue_id)
         a = queue.answers.get(question_id=q_id)
         answer = a.answer
-        context = {'q_text': q_text, 'queue_id': queue_id, 'answer': answer}
+        context = {'q_text': q_text, 'queue_id': queue_id, 'answer': answer, 'q_id': q_id}
         return render(request, 'question_update.html', context)
 
 def answer(request):
