@@ -27,7 +27,7 @@ class Pass(models.Model):
     answers = models.ManyToManyField(Answer)
 
 class Queue(models.Model):
-    date_added = models.DateTimeField('date added')
+    date = models.DateTimeField('date added')
     user = models.ForeignKey(User)
     property = models.ForeignKey(Property)
     answers = models.ManyToManyField(Answer)
