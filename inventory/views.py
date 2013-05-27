@@ -15,7 +15,8 @@ def home(request):
     if request.method == 'GET':
         user = request.user.id
         queues = Queue.objects.all()
-        context = {'queues': queues }
+        properties = Property.objects.all()
+        context = {'queues': queues, 'properties': properties }
         return render(request, 'home.html', context)
     else:
         username = request.POST['username']
@@ -164,5 +165,6 @@ def submit(request, user_id, queue_id):
     for a in answers:
         p.answers.add(a)
     
-    ''' delete queue answers, then queue '''
+    queue.answers.clear()
+    queue.delete()
     return redirect('/home')
