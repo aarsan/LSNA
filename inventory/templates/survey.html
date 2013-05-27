@@ -1,4 +1,4 @@
-<a href='/home'>home</a>
+<a href='/home'>home</a>&nbsp;&nbsp;<a href='/users/{{ user.id }}/queue'>back</a>
 <p>Unanswered Questions:</a>
 <ul>{% for q in uaq %}
        <li><a href='/users/{{ user.id }}/queue/{{ queue.id }}/survey/{{ q.id }}'>{{ q.question }}</a></li>

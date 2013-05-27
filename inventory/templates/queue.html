@@ -1,5 +1,4 @@
-<h3>All properties in your queue:</h3>
-<p>click on the property to complete survey</p>
+<h3>Click on the property to complete survey <a href='/home'>back</a></h3>
 <ul>
 {% for q in queue %}
     <li><a href='/users/{{ user.id }}/queue/{{ q.id }}/survey'>{{ q.property }}</a></li>

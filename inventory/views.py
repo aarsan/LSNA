@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
-from inventory.models import Property, Queue, Question, Answer
+from inventory.models import *
 
 def index(request):
     time = datetime.datetime.now()
@@ -82,11 +82,12 @@ def add_property(request):
         added_by = request.POST['user']
         user_id = request.user.id
         user = User.objects.get(pk=user_id)
-        date = '2013-05-05 20:30'
-        date_added = request.POST['date']
-        p = Property(number=number, street=street, zip='11215', date_added=date, added_by=user)
+        date = request.POST['date']
+        date = '2013-05-01'
+        zip = '11215'
+        p = Property(number=number, street=street, zip=zip, date=date, added_by=user)
         p.save()
-        q = Queue(date_added=date, user=user, property=p)
+        q = Queue(date=date, user=user, property=p)
         q.save()
         context = {}
         return HttpResponse("Property Added <a href='/'>home</a>")
@@ -153,4 +154,15 @@ def answer(request):
         return HttpResponse("method not allowed")
 
 def submit(request, user_id, queue_id):
-    return HttpResponse("Property Submitted")
+    queue = Queue.objects.filter(id=queue_id)
+    p = Pass.objects.bulk_create(queue)
+    queue = Queue.objects.get(pk=queue_id)
+    id = p.values_list('id')
+    p = Pass.objects.get(pk=id)
+    answers = queue.answers.all()
+
+    for a in answers:
+        p.answers.add(a)
+    
+    ''' delete queue answers, then queue '''
+    return redirect('/home')

@@ -5,7 +5,7 @@ class Property(models.Model):
     street = models.CharField(max_length=50)
     number = models.CharField(max_length=10)
     zip    = models.IntegerField(max_length=6)
-    date_added  = models.DateTimeField('date added')
+    date  = models.DateTimeField('date added')
     added_by = models.ForeignKey(User)
 
     def __unicode__(self):
