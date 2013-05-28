@@ -1,5 +1,5 @@
 <html>
-  <h3>Property list:</h3><p><a href="../logout">logout</a></p>
+  <h3>Property list:</h3><p><a href="../logout">logout</a>&nbsp;&nbsp;<a href='/home'>back</a></p>
     <ul>
       {% for i in p %}
         <li><a href="#">{{ i }}</a>&nbsp; completed passes: {{ i.pass_set.count }} &nbsp; queues: {{ i.queue_set.count }}</li>
