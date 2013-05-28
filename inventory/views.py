@@ -55,6 +55,9 @@ def properties(request):
     else:
         return HttpResponse("you must be logged in to see this page. <a href='/'>home</a>")
 
+def property_detail(request, prop_id):
+    return HttpResponse('Property Detail <a href="/properties">back</a>')
+
 def new_property(request):
     if request.method == 'GET':
         context = {}
