@@ -1,7 +1,8 @@
 <html>
-  <h3>List of all properties:</h3><p><a href="../logout">logout</a></p>
-       <ul>{% for i in p %}
-          <li>{{ i.street }}</li>
-           {% endfor %}
-      </ul>
+  <h3>Property list:</h3><p><a href="../logout">logout</a></p>
+    <ul>
+      {% for i in p %}
+        <li><a href="#">{{ i }}</a>&nbsp; completed passes: {{ i.pass_set.count }} &nbsp; queues: {{ i.queue_set.count }}</li>
+      {% endfor %}
+    </ul>
 </html>

@@ -1,9 +1,10 @@
 <html>
-    <p>Hello, {{ user }} <a href="logout">logout<a/></p>
+    <p>Hello, {{ user }} <a href="logout">logout</a></p>
 <ul>
   <li><a href="users/{{ user.id }}">your profile</a></li>
   <li><a href="users/{{ user.id }}/queue">your queue</a></li>
   <li><a href="properties/new">add new property</a></li>
+  <li><a href='/properties'>property list</a></li>
 </ul>
 
 
@@ -12,7 +13,7 @@
 
 <ul>
 {% for p in properties %}
-    <li><a href="#">{{ p }}</a>&nbsp; completed passes: {{ q.property.pass_set.count }} &nbsp; queues: {{ q.property.queue_set.count }}</li>
+    <li><a href="#">{{ p }}</a>&nbsp; completed passes: {{ p.pass_set.count }} &nbsp; queues: {{ p.queue_set.count }}</li>
 {% endfor %}
 </ul>
 

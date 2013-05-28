@@ -91,7 +91,7 @@ def add_property(request):
         q = Queue(date=date, user=user, property=p)
         q.save()
         context = {}
-        return HttpResponse("Property Added <a href='/'>home</a>")
+        return redirect('/home')
     else:
         return redirect('/')
 
