@@ -1,12 +1,56 @@
-<html>
-<h1>Welcome to the LSNA inventory App.</h1>
-<p>The time is: {{ time }} </p>
-<p>Total number of users in the system: {{ users.count }} </p>
+<!DOCTYPE html>
 
-<form id='login-form' action='home' method='post'> {% csrf_token %}
-<div class='login-field'><input type='text' name='username' placeholder=' Username'></div>
-<div class='password-field'><input type='password' name='password' placeholder=' Password'spellcheck='false'></div> <br />
-<input type='submit' value='SUBMIT' spellcheck='false'>
-</form>
+<head> 
 
+
+<meta charset='utf-8' />
+
+<title>Logan Square Neighborhood Association | Foreclosure Tracker</title>
+<meta name="description" content="Help us keep a record of foreclosed properties so we can build a better neighborhood together.">
+
+
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, target-densitydpi=160, initial-scale=1.0 maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="cleartype" content="on">
+
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->  
+  
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="screen">
+</head>
+
+<body>
+	<div id="stovepipe">
+	<div id="wrapper">
+		<nav id="side-nav">
+		<ul>
+			<li class="nav-logo"><img src="images/LSFT-logo.jpg" alt="Logan Square Foreclosure Tracker" /></li>
+			<li class="nav-btn"><a href="#" rel=""><img src="images/btn-home.jpg" alt="Home to LSNA" /></a></li>
+			<li class="nav-btn"><a href="#" rel=""><img src="images/btn-enternewproperty.jpg" alt="Enter a New Property" /></a></li>
+			<li class="nav-btn"><a href="#" rel=""><img src="images/btn-findaproperty.jpg" alt="Find a Property" /></a></li>
+			<li class="nav-btn"><a href="#" rel=""><img src="images/btn-viewyourhistory.jpg" alt="View Your History" /></a></li>
+			<li class="nav-btn"><a href="#" rel=""><img src="images/btn-viewyourprofile.jpg" alt="View Your Profile" /></a></li>
+			<li class="nav-btn"><a href="#" rel=""><img src="images/btn-aboutthisproject.jpg" alt="About This Project" /></a></li>
+			<li class="fill"><img src="images/btn-fill.jpg" alt="" /></li>
+		</ul>
+		</nav><!--side-nav-->
+		
+		
+	</div><!--wrapper-->
+	</div><!--stovepipe-->
+		<h1>Welcome to the LSNA inventory App.</h1>
+		<p>The time is: {{ time }} </p>
+		<p>Total number of users in the system: {{ users.count }} </p>
+
+		<form id='login-form' action='home' method='post'> {% csrf_token %}
+		<div class='login-field'><input type='text' name='username' placeholder=' Username'></div>
+		<div class='password-field'><input type='password' name='password' placeholder=' Password'spellcheck='false'></div> <br />
+		<input type='submit' value='SUBMIT' spellcheck='false'>
+		</form>
+
+	</div><!--stovepipe-->
+</body>
 </html>
