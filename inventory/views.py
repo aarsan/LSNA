@@ -56,7 +56,10 @@ def properties(request):
         return HttpResponse("you must be logged in to see this page. <a href='/'>home</a>")
 
 def property_detail(request, prop_id):
-    return HttpResponse('Property Detail <a href="/properties">back</a>')
+    user_id = request.user.id
+    context = {'prop_id': prop_id, 'user_id': user_id}
+    return render(request, 'property_detail.html', context)
+
 
 def new_property(request):
     if request.method == 'GET':
@@ -97,6 +100,22 @@ def add_property(request):
         return redirect('/home')
     else:
         return redirect('/')
+
+def add_property_to_queue(request):
+    if request.method != 'POST':
+        return HttpReseponse("Method Not Allowed")
+    else:
+        user_id = request.POST['user_id']
+        prop_id = request.POST['prop_id']
+        date = '2013-05-01'
+        user = User.objects.get(pk=user_id)
+        property = Property.objects.get(pk=prop_id)
+        queue = Queue(date=date, user=user, property=property)
+        queue.save()
+        context = {'user_id': user_id, 'prop_id': prop_id}
+        return HttpResponse("Property added to your queue" + "user id = " + user_id + "property id = " + prop_id)
+
+    return redirect('/properties')
 
 def queue(request, user_id):
     user = User.objects.get(pk=user_id)
@@ -158,10 +177,14 @@ def answer(request):
         return HttpResponse("method not allowed")
 
 def submit(request, user_id, queue_id):
-    queue = Queue.objects.filter(id=queue_id)
-    p = Pass.objects.bulk_create(queue)
+    ''' queue = Queue.objects.filter(id=queue_id) '''
     queue = Queue.objects.get(pk=queue_id)
-    id = p.values_list('id')
+    prop_id = queue.property_id
+    p = Pass(date='2013-05-05', property_id=prop_id)
+    p.save()
+    '''' p = Pass.objects.bulk_create(queue)'''
+    queue = Queue.objects.get(pk=queue_id)
+    id = p.id
     p = Pass.objects.get(pk=id)
     answers = queue.answers.all()
 
