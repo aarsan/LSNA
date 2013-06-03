@@ -110,11 +110,10 @@ def add_property_to_queue(request):
         date = '2013-05-01'
         user = User.objects.get(pk=user_id)
         property = Property.objects.get(pk=prop_id)
-        queue = Queue(date=date, user=user, property=property)
-        queue.save()
+        '''  queue = Queue(date=date, user=user, property=property) '''
+        queue = Queue.objects.get_or_create(date=date, user=user, property=property)
+        ''' queue.save() '''
         context = {'user_id': user_id, 'prop_id': prop_id}
-        return HttpResponse("Property added to your queue" + "user id = " + user_id + "property id = " + prop_id)
-
     return redirect('/properties')
 
 def queue(request, user_id):
