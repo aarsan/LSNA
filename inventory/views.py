@@ -60,6 +60,9 @@ def property_detail(request, prop_id):
     context = {'prop_id': prop_id, 'user_id': user_id}
     return render(request, 'property_detail.html', context)
 
+def property_images(request):
+    return render(request, 'property.jpg')
+
 
 def new_property(request):
     if request.method == 'GET':

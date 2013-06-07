@@ -7,6 +7,7 @@ class Property(models.Model):
     zip    = models.IntegerField(max_length=6)
     date  = models.DateTimeField('date added')
     added_by = models.ForeignKey(User)
+    photo = models.ImageField(upload_to='properties')
 
     def __unicode__(self):
         return self.number + " " + self.street

@@ -1,6 +1,8 @@
-Property Details <a href='/properties'>back</a>
+Property Details <a href='/properties'>back</a></br>
+Image:</br>
+<img src="/static/property.jpg" alt="property_image">
 <form method='post' action='/properties/addtoqueue'>{% csrf_token %}
 <input type='hidden' name='user_id' value='{{ user_id }}'>
 <input type='hidden' name='prop_id' value='{{ prop_id }}'> 
-<input type='submit' value='add to queue'>
+<input type='submit' value='add property to queue'>
 </form>
