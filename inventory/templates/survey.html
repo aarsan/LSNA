@@ -1,4 +1,17 @@
 <a href='/home'>home</a>&nbsp;&nbsp;<a href='/users/{{ user.id }}/queue'>back</a>
+<p>Upload an image:</p>
+<script>
+function displayResult()
+{
+var x=document.getElementById("fname").form.id;
+alert(x);
+}
+</script>
+<form id="form1">
+Select an image to upload:
+<input type="file" id="fname" size="50">
+</form>
+<button type="button" onclick="displayResult()">Upload Image</button>
 <p>Unanswered Questions:</a>
 <ul>{% for q in uaq %}
        <li><a href='/users/{{ user.id }}/queue/{{ queue.id }}/survey/{{ q.id }}'>{{ q.question }}</a></li>
