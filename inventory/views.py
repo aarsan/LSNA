@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from inventory.models import *
 
+from inventory.forms import *
+
 def index(request):
     time = datetime.datetime.now()
     users = User.objects.all()
@@ -189,10 +191,62 @@ def submit(request, user_id, queue_id):
     id = p.id
     p = Pass.objects.get(pk=id)
     answers = queue.answers.all()
-
-    for a in answers:
-        p.answers.add(a)
     
-    queue.answers.clear()
-    queue.delete()
-    return redirect('/home')
+    form = UploadFileForm(request.POST, request.FILES)
+    if form.is_valid():
+        handle_uploaded_file(request.FILES['file'], prop_id)
+
+        for a in answers:
+            p.answers.add(a)
+    
+        queue.answers.clear()
+        queue.delete()
+        return redirect('/home')
+    else:
+        return HttpResponse("something went wrong")
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES['file'])
+            return HttpResponse("image successfully uploaded")
+        else:
+            form = UploadFileForm()
+            return HttpResponse("something went wrong")
+    else:
+        return HttpResponse("must do a post")
+
+def handle_uploaded_file(f, prop_id):
+    with open('./inventory/static/' + str(prop_id) + '.jpg', 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
+def upload_form(request):
+    context = {}
+    return render(request, 'upload_form.html', context)
+
+def upload_process(request):
+    request.FILES['myfile']
+    filename = request.FILES['myfile'].name
+    return HttpResponse("file uploaded" + filename)
+
+def list(request):
+    # Handle file upload
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            newdoc = Document(docfile = request.FILES['docfile'])
+            newdoc.save()
+
+            # Redirect to the document list after POST
+            return HttpResponseRedirect(reverse('myapp.views.list'))
+    else:
+        form = DocumentForm() # A empty, unbound form
+
+    # Load documents for the list page
+    documents = Document.objects.all()
+
+    # Render list page with the documents and the form
+    context = {'documents': documents, 'form': form}
+    return render(request, 'list.html', context)
