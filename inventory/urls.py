@@ -21,7 +21,4 @@ urlpatterns = patterns('',
     url(r'^properties/add', views.add_property, name='add_property'),
     url(r'^properties', views.properties, name='properties'),
     url(r'^logout', views.logout_view, name='logout_view'),
-    url(r'^list', views.list, name='list'),
-    url(r'^upload_process', views.upload_file, name='upload_file'),
-    url(r'^upload', views.upload_form, name='upload_form')
 )
