@@ -212,3 +212,12 @@ def handle_uploaded_file(f, prop_id):
         for chunk in f.chunks():
             destination.write(chunk)
 
+def streets(request):
+    if request.method == "POST":
+        street = request.POST['street']
+        context = { 'street': street }
+        return render(request, 'street.html', context)
+    else:
+        return HttpResponse("Method Not Allowed")
+
+

@@ -1,4 +1,15 @@
 <html>
+<script src="{{ STATIC_URL }}jquery.js">
+</script>
+
+<p>Enter just the street name (leave out prefix and suffix)</p>
+<form id='list_streets' action='/streets' method='post'> {% csrf_token %}
+<label for='street'>Street: </label>
+<input id='street' type='text' name='street'></br>
+<input type='submit' value='search'>
+</form>
+
+
   <h3>Add new property form</h3><p><a href='../logout'>logout</a>&nbsp;<a href='/home'>back</a></p>
 
 <form id='add-property-form' action='new' method='post'> {% csrf_token %}

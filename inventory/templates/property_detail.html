@@ -1,6 +1,6 @@
 Property Details <a href='/properties'>back</a></br>
 Image:</br>
-<img src="/static/{{ prop_id }}.jpg" alt="property_image">
+<img src="{{ STATIC_URL }}{{ prop_id }}.jpg" alt="property_image">
 <form method='post' action='/properties/addtoqueue'>{% csrf_token %}
 <input type='hidden' name='user_id' value='{{ user_id }}'>
 <input type='hidden' name='prop_id' value='{{ prop_id }}'> 
