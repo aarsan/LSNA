@@ -1,4 +1,7 @@
 import datetime
+from django import template
+import urllib2
+import json
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -6,6 +9,11 @@ from django.http import HttpResponse
 from inventory.models import *
 
 from inventory.forms import *
+
+register = template.Library()
+@register.simple_tag
+def dictKeyLookup(the_dict, key):
+    return the_dict.get(key, '')
 
 def index(request):
     time = datetime.datetime.now()
@@ -68,7 +76,10 @@ def property_images(request):
 
 def new_property(request):
     if request.method == 'GET':
-        context = {}
+        url = "data.cityofchicago.org/resource/i6bp-fvbx.json"
+        street = "keeler"
+        data = "street"
+        context = {'url': url, 'data': data}
         return render(request, 'add_new_property.html', context)
     elif request.method == 'POST':
         number = request.POST['number']
@@ -215,7 +226,14 @@ def handle_uploaded_file(f, prop_id):
 def streets(request):
     if request.method == "POST":
         street = request.POST['street']
-        context = { 'street': street }
+        url = "http://data.cityofchicago.org/resource/i6bp-fvbx.json?street=" + street + "&$select=:id,street,full_street_name"
+        response = urllib2.urlopen(url)
+        code = response.getcode()
+        data = json.load(response)
+        strdata = json.dumps(data)
+        data = strdata.replace(":id", "id")
+        data = json.loads(data)
+        context = { 'data': data, 'code': code }
         return render(request, 'street.html', context)
     else:
         return HttpResponse("Method Not Allowed")

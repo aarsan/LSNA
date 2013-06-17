@@ -1,3 +1,9 @@
 <html>
-   {{ street }}
+</script>
+<p>Code: {{ code }}</p>
+<p>{% for obj in data %}</p>
+  <ul>
+    <li>ID: {{ obj.id }}&nbsp;Full Street Name: {{ obj.full_street_name }} &nbsp;Street: {{ obj.street }}</li>
+  </ul>
+   {% endfor %}
 </html>

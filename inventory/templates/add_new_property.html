@@ -1,15 +1,35 @@
 <html>
 <script src="{{ STATIC_URL }}jquery.js">
 </script>
+<script type="text/javascript">
+  $('document').ready(function(){
 
+    $.ajax({
+      type: 'GET',
+      dataType: "jsonp",
+      url: {{ url }},
+      data: {street: 'keeler'},
+      crossDomain: true,
+      success: function(response) {
+            {{ response }}
+        }
+    });
+  });
+
+</script>
 <p>Enter just the street name (leave out prefix and suffix)</p>
-<form id='list_streets' action='/streets' method='post'> {% csrf_token %}
+<form id="address_query" action="/streets" method="post"> {% csrf_token %}
 <label for='street'>Street: </label>
 <input id='street' type='text' name='street'></br>
-<input type='submit' value='search'>
+<input type='submit' value='search' id='button'>
 </form>
 
-
+</br>
+  <div id="data_box">
+  </div>
+</br>
+</br>
+<!--
   <h3>Add new property form</h3><p><a href='../logout'>logout</a>&nbsp;<a href='/home'>back</a></p>
 
 <form id='add-property-form' action='new' method='post'> {% csrf_token %}
@@ -21,4 +41,5 @@
 </div>
 <input type='submit' value='SUBMIT' spellcheck='false'>
 </form>
+-->
 </html>
