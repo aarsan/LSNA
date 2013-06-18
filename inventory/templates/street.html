@@ -1,9 +1,10 @@
 <html>
 </script>
 <p>Code: {{ code }}</p>
+Select the Full Street Name:
 <p>{% for obj in data %}</p>
   <ul>
-    <li>ID: {{ obj.id }}&nbsp;Full Street Name: {{ obj.full_street_name }} &nbsp;Street: {{ obj.street }}</li>
+    <li><a href="{{ obj.id }}">{{ obj.full_street_name }}</a>&nbsp;&nbsp;Address Range:{{ obj.min_address }} -- {{ obj.max_address }}</li>
   </ul>
    {% endfor %}
 </html>

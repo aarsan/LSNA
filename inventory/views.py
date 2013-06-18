@@ -1,5 +1,4 @@
 import datetime
-from django import template
 import urllib2
 import json
 from django.shortcuts import render, redirect
@@ -9,11 +8,6 @@ from django.http import HttpResponse
 from inventory.models import *
 
 from inventory.forms import *
-
-register = template.Library()
-@register.simple_tag
-def dictKeyLookup(the_dict, key):
-    return the_dict.get(key, '')
 
 def index(request):
     time = datetime.datetime.now()
@@ -76,10 +70,11 @@ def property_images(request):
 
 def new_property(request):
     if request.method == 'GET':
-        url = "data.cityofchicago.org/resource/i6bp-fvbx.json"
+        url = "http://data.cityofchicago.org/resource/i6bp-fvbx.json?street=keeler"
+        qstring = "$select=:id,street,full_street_name,min_address,max_address"
         street = "keeler"
         data = "street"
-        context = {'url': url, 'data': data}
+        context = {'url': url, 'data': data, 'qstring': qstring}
         return render(request, 'add_new_property.html', context)
     elif request.method == 'POST':
         number = request.POST['number']
@@ -226,7 +221,7 @@ def handle_uploaded_file(f, prop_id):
 def streets(request):
     if request.method == "POST":
         street = request.POST['street']
-        url = "http://data.cityofchicago.org/resource/i6bp-fvbx.json?street=" + street + "&$select=:id,street,full_street_name"
+        url = "http://data.cityofchicago.org/resource/i6bp-fvbx.json?street=" + street + "&$select=:id,street,full_street_name,min_address,max_address"
         response = urllib2.urlopen(url)
         code = response.getcode()
         data = json.load(response)

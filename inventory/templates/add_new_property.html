@@ -1,45 +1,44 @@
+<!DOCTYPE html>
 <html>
+<head>
 <script src="{{ STATIC_URL }}jquery.js">
 </script>
-<script type="text/javascript">
-  $('document').ready(function(){
+</head>
+<body>
+<script>
 
-    $.ajax({
-      type: 'GET',
-      dataType: "jsonp",
-      url: {{ url }},
-      data: {street: 'keeler'},
-      crossDomain: true,
-      success: function(response) {
-            {{ response }}
+  $('document').ready(function() {
+    $('#button').click(function() {
+      $.ajax({
+        dataType: "json",
+        url: "{{ url }}&{{ qstring }}",
+        crossDomain: true,
+        success: function(response) {
+          $('#data_box').append('<h3>Pick a matching street</h3>');
+
+            $.each(response, function (index, value) {
+     
+                $('#data_box').append(response[0].full_street_name);
+
+          });
         }
-    });
-  });
+     });
+   });
+});
 
 </script>
 <p>Enter just the street name (leave out prefix and suffix)</p>
-<form id="address_query" action="/streets" method="post"> {% csrf_token %}
+<p>example: For "N. Kedzie Ave.", just type Kedzie</p>
+<form id='address_query'>
 <label for='street'>Street: </label>
 <input id='street' type='text' name='street'></br>
-<input type='submit' value='search' id='button'>
+<div id="stuff"><input type="button" value='search' id="button"></div>
 </form>
 
 </br>
-  <div id="data_box">
+  <div id='data_box'>
   </div>
 </br>
 </br>
-<!--
-  <h3>Add new property form</h3><p><a href='../logout'>logout</a>&nbsp;<a href='/home'>back</a></p>
-
-<form id='add-property-form' action='new' method='post'> {% csrf_token %}
-<div class='address-field'>
-<label for='number'>Number: </label>
-<input id='number' type='text' name='number'></br></br>
-<label for='street'>Street: </label>
-<input id='street' type='text' name='street'>
-</div>
-<input type='submit' value='SUBMIT' spellcheck='false'>
-</form>
--->
+</body>
 </html>
