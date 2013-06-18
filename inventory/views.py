@@ -70,11 +70,10 @@ def property_images(request):
 
 def new_property(request):
     if request.method == 'GET':
-        url = "http://data.cityofchicago.org/resource/i6bp-fvbx.json?street=keeler"
+        url = "http://data.cityofchicago.org/resource/i6bp-fvbx.json?"
         qstring = "$select=:id,street,full_street_name,min_address,max_address"
         street = "keeler"
-        data = "street"
-        context = {'url': url, 'data': data, 'qstring': qstring}
+        context = {'url': url, 'qstring': qstring, 'street': street}
         return render(request, 'add_new_property.html', context)
     elif request.method == 'POST':
         number = request.POST['number']

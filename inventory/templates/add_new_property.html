@@ -6,19 +6,22 @@
 </head>
 <body>
 <script>
-
   $('document').ready(function() {
     $('#button').click(function() {
+      $("#data_box").empty();
+      var menuID = document.getElementById("street").value;
       $.ajax({
         dataType: "json",
         url: "{{ url }}&{{ qstring }}",
+        data: { street: menuID },
         crossDomain: true,
         success: function(response) {
           $('#data_box').append('<h3>Pick a matching street</h3>');
 
-            $.each(response, function (index, value) {
-     
-                $('#data_box').append(response[0].full_street_name);
+            $.each(response, function (key, value) {
+
+                var string = String(value);                 
+                $('#data_box').append("<a href='" + value[':id'] + "'>" + value.full_street_name + "</a>    Address Range: " + value.min_address + "-" + value.max_address + "</br>");
 
           });
         }
