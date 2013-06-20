@@ -11,10 +11,14 @@
 function myFunction() 
 {
   var full_street = $(this).text();
-  $('#data_box').html("<form><input type='text' value='"+ full_street + "' readonly>");
-  $('#data_box').append("&nbsp;(Range: 1 - 1477)");
-  $('#data_box').append("</br>Type the house number (must be within range):");
-  $('#data_box').append("<form><input type='text'></form>");
+  var range = $(this).attr('id');
+
+  $('#data_box').html("<form id='final' action='/properties/new' method='post'>");
+  $("{% csrf_token %}").appendTo("#final");
+  $("<input type='text' name='street' value='"+ full_street + "' readonly>").appendTo("#final");
+  $("<label for='number'>House Number: " + range + "</label>").appendTo("#final");
+  $("</br><input id='number' name='number' type='text'>").appendTo("#final");
+  $("</br><input type='submit' value='submit'>").appendTo("#final");
 }
 
       $('#button').click(function() {
@@ -30,7 +34,7 @@ function myFunction()
                   $('#data_box').html('<h3>Pick a matching street</h3>');
 
                   $.each(response, function (key, value) {
-                      $('#data_box').append("<a id='" + value[':id'] + "' href='#' class='runMyFunction'>" + value.full_street_name + "</a>    Address Range: " + value.min_address + "-" + value.max_address + "</br>");
+                      $('#data_box').append("<a id='" + value.min_address + " to " + value.max_address +"' href='#' class='runMyFunction'>" + value.full_street_name + "</a>    Address Range: " + value.min_address + "-" + value.max_address + "</br>");
                       
                   });
                   $('#data_box').on('click', '.runMyFunction', myFunction);
