@@ -7,27 +7,37 @@
 <body>
 <script>
   $('document').ready(function() {
-    $('#button').click(function() {
-      $("#data_box").empty();
-      var menuID = document.getElementById("street").value;
-      $.ajax({
-        dataType: "json",
-        url: "{{ url }}&{{ qstring }}",
-        data: { street: menuID },
-        crossDomain: true,
-        success: function(response) {
-          $('#data_box').append('<h3>Pick a matching street</h3>');
 
-            $.each(response, function (key, value) {
+function myFunction() 
+{
+  var full_street = $(this).text();
+  $('#data_box').html("<form><input type='text' value='"+ full_street + "' readonly>");
+  $('#data_box').append("&nbsp;(Range: 1 - 1477)");
+  $('#data_box').append("</br>Type the house number (must be within range):");
+  $('#data_box').append("<form><input type='text'></form>");
+}
 
-                var string = String(value);                 
-                $('#data_box').append("<a href='" + value[':id'] + "'>" + value.full_street_name + "</a>    Address Range: " + value.min_address + "-" + value.max_address + "</br>");
+      $('#button').click(function() {
+          var street = document.getElementById("street").value;
 
-          });
-        }
-     });
-   });
-});
+          $.ajax({
+              dataType: "json",
+              url: "{{ url }}&{{ qstring }}",
+              data: { street: street },
+              crossDomain: true,
+              success: function(response) {
+
+                  $('#data_box').html('<h3>Pick a matching street</h3>');
+
+                  $.each(response, function (key, value) {
+                      $('#data_box').append("<a id='" + value[':id'] + "' href='#' class='runMyFunction'>" + value.full_street_name + "</a>    Address Range: " + value.min_address + "-" + value.max_address + "</br>");
+                      
+                  });
+                  $('#data_box').on('click', '.runMyFunction', myFunction);
+              }
+         });
+      });
+  });
 
 </script>
 <p>Enter just the street name (leave out prefix and suffix)</p>
