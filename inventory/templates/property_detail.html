@@ -1,10 +1,28 @@
-Property Details <a href='/properties'>back</a></br>
-<p>Address: {{ address }}</p>
-Image:</br>
-<img src="{{ STATIC_URL }}{{ prop_id }}.jpg" width="200" alt="property_image">
-<form method='post' action='/properties/addtoqueue'>{% csrf_token %}
-<input type='hidden' name='user_id' value='{{ user_id }}'>
-<input type='hidden' name='prop_id' value='{{ prop_id }}'> 
-<input type='submit' value='add property to queue'>
-</form>
-<input type='button' value='view last survey'>
+<!DOCTYPE html>
+<html>
+  <head>
+  <script src="{{ STATIC_URL }}jquery.js"></script>
+  <script>
+  $(document).ready(function() {
+
+    $("#survey_button").click(function() {
+       $('#data_box').html("<p>Here are your results</p>");
+    });
+  });
+  </script>
+  </head>
+  <body>
+  Property Details <a href='/properties'>back</a></br>
+  <p>Address: {{ address }}</p>
+  Image:</br>
+  <img src="{{ STATIC_URL }}{{ prop_id }}.jpg" width="200" alt="property_image">
+  <form method='post' action='/properties/addtoqueue'>{% csrf_token %}
+  <input type='hidden' name='user_id' value='{{ user_id }}'>
+  <input type='hidden' name='prop_id' value='{{ prop_id }}'> 
+  <input type='submit' value='add property to queue'>
+  </form></br>
+  <input id='survey_button' type='button' value='view last survey'>
+  <div id='data_box'>
+  </div>
+  </body>
+</html>
