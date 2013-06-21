@@ -61,7 +61,9 @@ def properties(request):
 
 def property_detail(request, prop_id):
     user_id = request.user.id
-    context = {'prop_id': prop_id, 'user_id': user_id}
+    p = Property.objects.get(pk=prop_id)
+    address = p.number + " " + p.street
+    context = {'prop_id': prop_id, 'user_id': user_id, 'address': address}
     return render(request, 'property_detail.html', context)
 
 def property_images(request):
