@@ -5,9 +5,9 @@
     <table border="1">
       <thead>
         <tr>
-          <th>Last Survey</th>
-          <th>Surveyed By</th>
           <th>Address</th>
+          <th>Survey Submitted</th>
+          <th>Surveyed By</th>
           <th>Q 1</th>
           <th>Q 2</th>
           <th>Q 3</th>
@@ -16,7 +16,7 @@
       <tbody>
         {% for pass in passes %}
         <tr>
-          <td>{{ pass.date }}</td><td>{{ pass.user }}</td><td>{{ pass.property }}</td><td>{{ pass.answers.values_list.0.1 }}</td><td>{{ pass.answers.values_list.1.1 }}</td><td>{{ pass.answers.values_list.2.1 }}</td>
+          <td>{{ pass.property }}</td><td>{{ pass.date }}</td><td>{{ pass.user }}</td><td>{{ pass.answers.values_list.0.1 }}</td><td>{{ pass.answers.values_list.1.1 }}</td><td>{{ pass.answers.values_list.2.1 }}</td>
         </tr>
         {% endfor %}
       </tbody>
