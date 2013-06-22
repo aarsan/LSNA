@@ -1,0 +1,25 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>User</th>
+          <th>Address</th>
+          <th>Q 1</th>
+          <th>Q 2</th>
+          <th>Q 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pass in passes %}
+        <tr>
+          <td>{{ pass.date }}</td><td></td><td>{{ pass.property }}</td><td>{{ pass.answers.values_list.0.1 }}</td><td>{{ pass.answers.values_list.1.1 }}</td><td>{{ pass.answers.values_list.2.1 }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

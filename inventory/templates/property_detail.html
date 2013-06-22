@@ -6,7 +6,13 @@
   $(document).ready(function() {
 
     $("#survey_button").click(function() {
-       $('#data_box').html("<p>Here are your results</p>");
+       $.ajax({
+         url: "/report/{{ prop_id }}",
+         success: function(response) {
+             $('#data_box').html("<p>Here are your results</p>");
+             $('#data_box').append(response); 
+           }
+       });       
     });
   });
   </script>

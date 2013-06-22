@@ -234,4 +234,8 @@ def streets(request):
     else:
         return HttpResponse("Method Not Allowed")
 
-
+def report(request, prop_id):
+    p = Property.objects.get(pk=prop_id)
+    passes = p.pass_set.all()
+    context = { 'prop_id': prop_id, 'passes': passes }
+    return render(request, 'report.html', context)
