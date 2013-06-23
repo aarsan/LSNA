@@ -22,5 +22,6 @@ urlpatterns = patterns('',
     url(r'^properties', views.properties, name='properties'),
     url(r'^logout', views.logout_view, name='logout_view'),
     url(r'^streets', views.streets, name='streets'),
-    url(r'^report/(?P<prop_id>\d+)', views.report, name='report')
+    url(r'^report/(?P<prop_id>\d+)', views.report, name='report'),
+    url(r'^report/all', views.full_report, name='full_report')
 )

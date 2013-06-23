@@ -239,5 +239,13 @@ def streets(request):
 def report(request, prop_id):
     p = Property.objects.get(pk=prop_id)
     passes = p.pass_set.all()
-    context = { 'prop_id': prop_id, 'passes': passes }
+    context = { 'passes': passes }
     return render(request, 'report.html', context)
+
+def full_report(request):
+    props = Property.objects.all()
+    allpasses = []
+    for prop in props:
+        allpasses.append(prop.pass_set.all())
+    context = { 'allpasses': allpasses }
+    return render(request, 'full_report.html', context)
