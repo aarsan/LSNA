@@ -8,15 +8,24 @@
           <th>Address</th>
           <th>Survey Submitted</th>
           <th>Surveyed By</th>
-          <th>Q 1</th>
-          <th>Q 2</th>
-          <th>Q 3</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+          <th>9</th>
+          <th>10</th>
+          <th>11</th>
+          <th>12</th>
         </tr>
       </thead>
       <tbody>
         {% for pass in passes %}
         <tr>
-          <td>{{ pass.property }}</td><td>{{ pass.date }}</td><td>{{ pass.user }}</td><td>{{ pass.answers.values_list.0.1 }}</td><td>{{ pass.answers.values_list.1.1 }}</td><td>{{ pass.answers.values_list.2.1 }}</td>
+          <td>{{ pass.property }}</td><td>{{ pass.date }}</td><td>{{ pass.user }}</td><td>{{ pass.answers.values_list.0.1 }}</td><td>{{ pass.answers.values_list.1.1 }}</td><td>{{ pass.answers.values_list.2.1 }}</td><td>{{ pass.answers.values_list.3.1 }}</td><td>{{ pass.answers.values_list.4.1 }}</td><td>{{ pass.answers.values_list.5.1 }}</td><td>{{ pass.answers.values_list.6.1 }}</td><td>{{ pass.answers.values_list.7.1 }}</td><td>{{ pass.answers.values_list.8.1 }}</td><td>{{ pass.answers.values_list.9.1 }}</td><td>{{ pass.answers.values_list.10.1 }}</td><td>{{ pass.answers.values_list.11.1 }}</td>
         </tr>
         {% endfor %}
       </tbody>

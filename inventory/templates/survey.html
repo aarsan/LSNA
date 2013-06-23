@@ -1,15 +1,15 @@
 <a href='/home'>home</a>&nbsp;&nbsp;<a href='/users/{{ user.id }}/queue'>back</a>
 <p>Unanswered Questions:</a>
-<ul>{% for q in uaq %}
+<ol>{% for q in uaq %}
        <li><a href='/users/{{ user.id }}/queue/{{ queue.id }}/survey/{{ q.id }}'>{{ q.question }}</a></li>
     {% endfor %}
-</ul>
+</ol>
 </br>
 <p>Answered Questions:</p>
-<ul>{% for q in aq %}
-       <li><a href='/users/{{ user.id }}/queue/{{ queue.id }}/survey/{{ q.question_id }}/modify'>{{ q.question }}</a></li><p>Answer: {{ q.answer }} </p>
+<ol>{% for q in aq %}
+       <li><a href='/users/{{ user.id }}/queue/{{ queue.id }}/survey/{{ q.question_id }}/modify'>{{ q.question }}</a>&nbsp;Answer: {{ q.answer }}</li>
     {% endfor %}
-</ul>
+</ol>
 {% if uaq.exists %}
 {% else %}
     <form name="submit_property_survey" action="/users/{{ user.id }}/queue/{{ queue.id }}/submit" enctype="multipart/form-data" method="post">{% csrf_token %}
