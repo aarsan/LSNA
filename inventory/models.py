@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django import forms
 
 class Property(models.Model):
     street = models.CharField(max_length=50)
@@ -7,6 +8,7 @@ class Property(models.Model):
     zip    = models.IntegerField(max_length=6)
     date  = models.DateTimeField('date added')
     added_by = models.ForeignKey(User)
+    photo = models.ImageField(upload_to='properties')
 
     def __unicode__(self):
         return self.number + " " + self.street
@@ -35,3 +37,5 @@ class Queue(models.Model):
     def __unicode__(self):
         return unicode(self.user)
 
+class Document(models.Model):
+    docfile = models.FileField(upload_to='documents/%Y/%m/%d')

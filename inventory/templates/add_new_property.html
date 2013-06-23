@@ -1,13 +1,61 @@
+<!DOCTYPE html>
 <html>
-  <h3>Add new property form</h3><p><a href='../logout'>logout</a>&nbsp;<a href='/home'>back</a></p>
+<head>
+<script src="{{ STATIC_URL }}jquery.js">
+</script>
+</head>
+<body>
+<script>
+  $('document').ready(function() {
 
-<form id='add-property-form' action='new' method='post'> {% csrf_token %}
-<div class='address-field'>
-<label for='number'>Number: </label>
-<input id='number' type='text' name='number'></br></br>
+function myFunction() 
+{
+  var full_street = $(this).text();
+  var range = $(this).attr('id');
+
+  $('#data_box').html("<form id='final' action='/properties/new' method='post'>");
+  $("{% csrf_token %}").appendTo("#final");
+  $("<input type='text' name='street' value='"+ full_street + "' readonly>").appendTo("#final");
+  $("<label for='number'>House Number: " + range + "</label>").appendTo("#final");
+  $("</br><input id='number' name='number' type='text'>").appendTo("#final");
+  $("</br><input type='submit' value='submit'>").appendTo("#final");
+}
+
+      $('#button').click(function() {
+          var street = document.getElementById("street").value;
+
+          $.ajax({
+              dataType: "json",
+              url: "{{ url }}&{{ qstring }}",
+              data: { street: street },
+              crossDomain: true,
+              success: function(response) {
+
+                  $('#data_box').html('<h3>Pick a matching street</h3>');
+
+                  $.each(response, function (key, value) {
+                      $('#data_box').append("<a id='" + value.min_address + " to " + value.max_address +"' href='#' class='runMyFunction'>" + value.full_street_name + "</a>    Address Range: " + value.min_address + "-" + value.max_address + "</br>");
+                      
+                  });
+                  $('#data_box').on('click', '.runMyFunction', myFunction);
+              }
+         });
+      });
+  });
+
+</script>
+<p>Enter just the street name (leave out prefix and suffix)</p>
+<p>example: For "N. Kedzie Ave.", just type Kedzie</p>
+<form id='address_query'>
 <label for='street'>Street: </label>
-<input id='street' type='text' name='street'>
-</div>
-<input type='submit' value='SUBMIT' spellcheck='false'>
+<input id='street' type='text' name='street'></br>
+<div id="stuff"><input type="button" value='search' id="button"></div>
 </form>
+
+</br>
+  <div id='data_box'>
+  </div>
+</br>
+</br>
+</body>
 </html>

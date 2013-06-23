@@ -1,9 +1,13 @@
 import datetime
+import urllib2
+import json
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from inventory.models import *
+
+from inventory.forms import *
 
 def index(request):
     time = datetime.datetime.now()
@@ -56,11 +60,20 @@ def properties(request):
         return HttpResponse("you must be logged in to see this page. <a href='/'>home</a>")
 
 def property_detail(request, prop_id):
-    return HttpResponse('Property Detail <a href="/properties">back</a>')
+    user_id = request.user.id
+    context = {'prop_id': prop_id, 'user_id': user_id}
+    return render(request, 'property_detail.html', context)
+
+def property_images(request):
+    return render(request, 'property.jpg')
+
 
 def new_property(request):
     if request.method == 'GET':
-        context = {}
+        url = "http://data.cityofchicago.org/resource/i6bp-fvbx.json?"
+        qstring = "$select=:id,street,full_street_name,min_address,max_address"
+        street = "keeler"
+        context = {'url': url, 'qstring': qstring, 'street': street}
         return render(request, 'add_new_property.html', context)
     elif request.method == 'POST':
         number = request.POST['number']
@@ -97,6 +110,21 @@ def add_property(request):
         return redirect('/home')
     else:
         return redirect('/')
+
+def add_property_to_queue(request):
+    if request.method != 'POST':
+        return HttpReseponse("Method Not Allowed")
+    else:
+        user_id = request.POST['user_id']
+        prop_id = request.POST['prop_id']
+        date = '2013-05-01'
+        user = User.objects.get(pk=user_id)
+        property = Property.objects.get(pk=prop_id)
+        '''  queue = Queue(date=date, user=user, property=property) '''
+        queue = Queue.objects.get_or_create(date=date, user=user, property=property)
+        ''' queue.save() '''
+        context = {'user_id': user_id, 'prop_id': prop_id}
+    return redirect('/properties')
 
 def queue(request, user_id):
     user = User.objects.get(pk=user_id)
@@ -158,16 +186,50 @@ def answer(request):
         return HttpResponse("method not allowed")
 
 def submit(request, user_id, queue_id):
-    queue = Queue.objects.filter(id=queue_id)
-    p = Pass.objects.bulk_create(queue)
+    ''' queue = Queue.objects.filter(id=queue_id) '''
     queue = Queue.objects.get(pk=queue_id)
-    id = p.values_list('id')
-    p = Pass.objects.get(pk=id)
+    prop_id = queue.property_id
+    p = Pass(date='2013-05-05', property_id=prop_id)
+    '''' p = Pass.objects.bulk_create(queue)'''
+    queue = Queue.objects.get(pk=queue_id)
     answers = queue.answers.all()
-
-    for a in answers:
-        p.answers.add(a)
     
-    queue.answers.clear()
-    queue.delete()
-    return redirect('/home')
+    form = UploadFileForm(request.POST, request.FILES)
+    if form.is_valid():
+        p.save()
+        id = p.id
+        p = Pass.objects.get(pk=id)
+
+        handle_uploaded_file(request.FILES['file'], prop_id)
+
+        for a in answers:
+            p.answers.add(a)
+    
+        queue.answers.clear()
+        queue.delete()
+        return redirect('/home')
+    else:
+        return HttpResponse("You must upload a property image <a href='/users/" + user_id + "/queue/" + queue_id + "/survey'>back</a>")
+
+
+def handle_uploaded_file(f, prop_id):
+    with open('./inventory/static/' + str(prop_id) + '.jpg', 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
+def streets(request):
+    if request.method == "POST":
+        street = request.POST['street']
+        url = "http://data.cityofchicago.org/resource/i6bp-fvbx.json?street=" + street + "&$select=:id,street,full_street_name,min_address,max_address"
+        response = urllib2.urlopen(url)
+        code = response.getcode()
+        data = json.load(response)
+        strdata = json.dumps(data)
+        data = strdata.replace(":id", "id")
+        data = json.loads(data)
+        context = { 'data': data, 'code': code }
+        return render(request, 'street.html', context)
+    else:
+        return HttpResponse("Method Not Allowed")
+
+

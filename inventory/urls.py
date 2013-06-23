@@ -15,8 +15,11 @@ urlpatterns = patterns('',
     url(r'^users/(?P<user_id>\d+)', views.user_detail, name='user_detail'),
     url(r'^users', views.users, name='users'),
     url(r'^properties/(?P<prop_id>\d+)/detail', views.property_detail, name='property_detail'),
+    url(r'^properties/addtoqueue', views.add_property_to_queue, name='add_property_to_queue'),
+    url(r'^properties/images', views.property_images, name='property_images'),
     url(r'^properties/new', views.new_property, name='new_property'),
     url(r'^properties/add', views.add_property, name='add_property'),
     url(r'^properties', views.properties, name='properties'),
-    url(r'^logout', views.logout_view, name='logout_view')
+    url(r'^logout', views.logout_view, name='logout_view'),
+    url(r'^streets', views.streets, name='streets')
 )
