@@ -68,11 +68,17 @@
 <!-*********************************
 BODY BELOW
 *********************************-->
-    <p>Hello, {{ user }} <a href="logout">logout</a></p>
-    <a href="users/{{ user.id }}">your profile</a></br>
-    <a href="users/{{ user.id }}/queue">your queue</a></br>
-    <a href="properties/new">add new property</a></br>
-    <a href='/properties'>property list</a>
+    <p>Welcome back, {{ user }}</p>
+<p>Click on the property to complete survey <a href='/home'>back</a></p>
+<ul>
+{% if queue.count > 0 %}
+    {% for q in queue %}
+    <li><a href='/users/{{ user.id }}/queue/{{ q.id }}/survey'>{{ q.property }}</a></li>
+    {% endfor %}
+{% else %}
+    <h3>You have nothing in your queue.</h3>
+{% endif %}
+</ul>
 <!-*********************************
 BODY ABOVE
 *********************************-->
