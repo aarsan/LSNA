@@ -12,12 +12,8 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-<<<<<<< HEAD
-	'NAME': '/Users/nngardner/Repos/aarsan/lSNA/sqlite3.db',                      # Or path to database file if using sqlite3.
-=======
 	#'NAME': 'c:\data\projects\python\lsna/sqlite3.db',                      # Or path to database file if using sqlite3.
         'NAME': 'sqlite3.db',
->>>>>>> e88a9b4a5aeb907bde987346fd8e1324ae53c86f
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
