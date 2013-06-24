@@ -1,9 +1,7 @@
 <html>
     <p>Hello, {{ user }} <a href="logout">logout</a></p>
-  <ul>
-    <li><a href="users/{{ user.id }}">your profile</a></li>
-    <li><a href="users/{{ user.id }}/queue">your queue</a></li>
-    <li><a href="properties/new">add new property</a></li>
-    <li><a href='/properties'>property list</a></li>
-  </ul>
+    <a href="users/{{ user.id }}">your profile</a></br>
+    <a href="users/{{ user.id }}/queue">your queue</a></br>
+    <a href="properties/new">add new property</a></br>
+    <a href='/properties'>property list</a>
 </html>

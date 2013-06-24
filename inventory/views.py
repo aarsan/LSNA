@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from inventory.models import *
+from datetime import date
 
 from inventory.forms import *
 
@@ -61,7 +62,9 @@ def properties(request):
 
 def property_detail(request, prop_id):
     user_id = request.user.id
-    context = {'prop_id': prop_id, 'user_id': user_id}
+    p = Property.objects.get(pk=prop_id)
+    address = p.number + " " + p.street
+    context = {'prop_id': prop_id, 'user_id': user_id, 'address': address}
     return render(request, 'property_detail.html', context)
 
 def property_images(request):
@@ -85,7 +88,7 @@ def new_property(request):
             return HttpResponse("Please fill out all fields and try again. <a href='new'>back</a> ")
         else:
             user = request.user.id
-            date = datetime.datetime.now()
+            date = datetime.datetime.today().isoformat()
             context = {'user': user, 'date': date, 'number': number, 'street': street}
         return render(request, 'add_new_property_confirm.html', context)
 
@@ -100,9 +103,8 @@ def add_property(request):
         user_id = request.user.id
         user = User.objects.get(pk=user_id)
         date = request.POST['date']
-        date = '2013-05-01'
-        zip = '11215'
-        p = Property(number=number, street=street, zip=zip, date=date, added_by=user)
+        ''' zip = '11215' '''
+        p = Property(number=number, street=street, date=date, added_by=user)
         p.save()
         q = Queue(date=date, user=user, property=p)
         q.save()
@@ -117,7 +119,7 @@ def add_property_to_queue(request):
     else:
         user_id = request.POST['user_id']
         prop_id = request.POST['prop_id']
-        date = '2013-05-01'
+        date = datetime.datetime.today().isoformat()
         user = User.objects.get(pk=user_id)
         property = Property.objects.get(pk=prop_id)
         '''  queue = Queue(date=date, user=user, property=property) '''
@@ -189,7 +191,9 @@ def submit(request, user_id, queue_id):
     ''' queue = Queue.objects.filter(id=queue_id) '''
     queue = Queue.objects.get(pk=queue_id)
     prop_id = queue.property_id
-    p = Pass(date='2013-05-05', property_id=prop_id)
+    date = datetime.datetime.today().isoformat()
+    user = User.objects.get(pk=user_id)
+    p = Pass(user=user, date=date, property_id=prop_id)
     '''' p = Pass.objects.bulk_create(queue)'''
     queue = Queue.objects.get(pk=queue_id)
     answers = queue.answers.all()
@@ -232,4 +236,16 @@ def streets(request):
     else:
         return HttpResponse("Method Not Allowed")
 
+def report(request, prop_id):
+    p = Property.objects.get(pk=prop_id)
+    passes = p.pass_set.all()
+    context = { 'passes': passes }
+    return render(request, 'report.html', context)
 
+def full_report(request):
+    props = Property.objects.all()
+    allpasses = []
+    for prop in props:
+        allpasses.append(prop.pass_set.all())
+    context = { 'allpasses': allpasses }
+    return render(request, 'full_report.html', context)

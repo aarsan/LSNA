@@ -1,6 +1,10 @@
 <p>Click on the property to complete survey <a href='/home'>back</a></p>
 <ul>
-{% for q in queue %}
+{% if queue.count > 0 %}
+    {% for q in queue %}
     <li><a href='/users/{{ user.id }}/queue/{{ q.id }}/survey'>{{ q.property }}</a></li>
-{% endfor %}
+    {% endfor %}
+{% else %}
+    <h3>You have nothing in your queue.</h3>
+{% endif %}
 </ul>

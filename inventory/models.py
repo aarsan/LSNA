@@ -5,10 +5,10 @@ from django import forms
 class Property(models.Model):
     street = models.CharField(max_length=50)
     number = models.CharField(max_length=10)
-    zip    = models.IntegerField(max_length=6)
+    ''' zip    = models.IntegerField(max_length=6) '''
     date  = models.DateTimeField('date added')
     added_by = models.ForeignKey(User)
-    photo = models.ImageField(upload_to='properties')
+    ''' photo = models.ImageField(upload_to='properties') '''
 
     def __unicode__(self):
         return self.number + " " + self.street
@@ -27,6 +27,7 @@ class Pass(models.Model):
     date = models.DateTimeField('date surveyed')
     property = models.ForeignKey(Property)
     answers = models.ManyToManyField(Answer)
+    user = models.ForeignKey(User)
 
 class Queue(models.Model):
     date = models.DateTimeField('date added')

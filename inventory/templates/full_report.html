@@ -1,0 +1,25 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Survey Submitted</th>
+          <th>Surveyed By</th>
+          <th>Q 1</th>
+          <th>Q 2</th>
+          <th>Q 3</th>
+        </tr>
+      </thead>
+      <tbody>
+             {% for pass in allpasses %}
+        <tr>
+          <td>{{ pass.0.property }}</td><td>{{ pass.0.date }}</td><td>{{ pass.0.user }}</td><td>{{ pass.0.answers.values_list.0.1 }}</td><td>{{ pass.0.answers.values_list.1.1 }}</td><td>{{ pass.0.answers.values_list.2.1 }}</td>
+        </tr>
+           {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

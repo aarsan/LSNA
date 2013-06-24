@@ -4,9 +4,18 @@
 <script src="{{ STATIC_URL }}jquery.js">
 </script>
 </head>
+<p>Hello, {{ user }} <a href="/logout">logout</a>&nbsp;<a href="/home">back</a></p>
 <body>
 <script>
   $('document').ready(function() {
+
+  $("#street").keypress(function(event){
+    if(event.keyCode == 13){
+      event.preventDefault();
+      $("#button").click();
+    }
+   });
+
 
 function myFunction() 
 {
@@ -49,7 +58,7 @@ function myFunction()
 <form id='address_query'>
 <label for='street'>Street: </label>
 <input id='street' type='text' name='street'></br>
-<div id="stuff"><input type="button" value='search' id="button"></div>
+<input type='button' value='search' id='button'>
 </form>
 
 </br>
