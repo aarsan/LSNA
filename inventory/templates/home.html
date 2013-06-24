@@ -69,7 +69,7 @@
 BODY BELOW
 *********************************-->
     <p>Welcome back, {{ user }}</p>
-<p>Click on the property to complete survey <a href='/home'>back</a></p>
+<p>Click on the property to complete survey</p>
 <ul>
 {% if queue.count > 0 %}
     {% for q in queue %}
@@ -79,6 +79,10 @@ BODY BELOW
     <h3>You have nothing in your queue.</h3>
 {% endif %}
 </ul>
+
+<p>Click <a href="">here</a> for more about how to use the app, or</p>
+<p>click <a href="">here</a> to leave feedback on how we could improve the app.</p>
+<p>Thanks!</p>
 <!-*********************************
 BODY ABOVE
 *********************************-->
